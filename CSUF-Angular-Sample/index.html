@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="AngularJSCtrl"> 
+
+<p>Today's welcome message is:</p>
+
+<h1>{{data}}</h1>
+
+</div>
+
+<script>
+var myApp = angular.module('myApp',[]);
+
+myApp.service('dataService', function($http) {
+delete $http.defaults.headers.common['X-Requested-With'];
+this.getData = function() {
+    // $http() returns a $promise that we can add handlers with .then()
+    return $http({
+        method: 'GET',
+        url: 'https://predix-analytics-catalog-release.run.aws-usw02-pr.ice.predix.io/api/v1/catalog/analytics',
+        headers: {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI3YWY3YmU2NS1mYmFlLTQ3ZGItYThiYi1hNjg5OWViMTYyNGEiLCJzdWIiOiJhZG1pbiIsInNjb3BlIjpbImNsaWVudHMucmVhZCIsImFuYWx5dGljcy56b25lcy44MTAwNjI1OC0xOGI2LTQ1YWEtOTc1Yi05NTZhOTFlYWRiMmIudXNlciIsImFuYWx5dGljcy56b25lcy5iNTE3OGI3ZC1lODg1LTQ0ODAtYmRkOS03M2QxYTY2ZjdmOTQudXNlciIsImNsaWVudHMuc2VjcmV0IiwiaWRwcy53cml0ZSIsInVhYS5yZXNvdXJjZSIsImFuYWx5dGljcy56b25lcy4xMmY2MDQ0OS1lOWM5LTQ2MTEtODk2ZS05ZjdlN2Y0ZTM2MGYudXNlciIsImNsaWVudHMuYWRtaW4iLCJhbmFseXRpY3Muem9uZXMuYjQ4ZWVmYzEtZDE4Yi00YTM1LWJjNmEtYTFlZTc4ODczZWI3LnVzZXIiLCJzY2ltLnJlYWQiLCJhbmFseXRpY3Muem9uZXMuOTUxZmRjMjItOGI5OC00NzRhLThhYWEtMjQ0Y2ExM2QwODY3LnVzZXIiLCJjbGllbnRzLndyaXRlIiwiem9uZXMuYmMwMjY1NTEtNzZhZC00OWM5LWEyYjUtNjY0ZTVjYzZlMWMwLmFkbWluIiwiaWRwcy5yZWFkIiwic2NpbS53cml0ZSJdLCJjbGllbnRfaWQiOiJhZG1pbiIsImNpZCI6ImFkbWluIiwiYXpwIjoiYWRtaW4iLCJncmFudF90eXBlIjoiY2xpZW50X2NyZWRlbnRpYWxzIiwicmV2X3NpZyI6IjhjNmM0M2RiIiwiaWF0IjoxNDU4MDg5NTg2LCJleHAiOjE0NTgxMzI3ODYsImlzcyI6Imh0dHBzOi8vYmMwMjY1NTEtNzZhZC00OWM5LWEyYjUtNjY0ZTVjYzZlMWMwLnByZWRpeC11YWEucnVuLmF3cy11c3cwMi1wci5pY2UucHJlZGl4LmlvL29hdXRoL3Rva2VuIiwiemlkIjoiYmMwMjY1NTEtNzZhZC00OWM5LWEyYjUtNjY0ZTVjYzZlMWMwIiwiYXVkIjpbImFkbWluIiwiY2xpZW50cyIsImFuYWx5dGljcy56b25lcy44MTAwNjI1OC0xOGI2LTQ1YWEtOTc1Yi05NTZhOTFlYWRiMmIiLCJhbmFseXRpY3Muem9uZXMuYjUxNzhiN2QtZTg4NS00NDgwLWJkZDktNzNkMWE2NmY3Zjk0IiwiaWRwcyIsInVhYSIsImFuYWx5dGljcy56b25lcy4xMmY2MDQ0OS1lOWM5LTQ2MTEtODk2ZS05ZjdlN2Y0ZTM2MGYiLCJhbmFseXRpY3Muem9uZXMuYjQ4ZWVmYzEtZDE4Yi00YTM1LWJjNmEtYTFlZTc4ODczZWI3Iiwic2NpbSIsImFuYWx5dGljcy56b25lcy45NTFmZGMyMi04Yjk4LTQ3NGEtOGFhYS0yNDRjYTEzZDA4NjciLCJ6b25lcy5iYzAyNjU1MS03NmFkLTQ5YzktYTJiNS02NjRlNWNjNmUxYzAiXX0.mkgWVfFkuNXhQBHTZUOiAC9Md_C4tYbpdmqVv0SZsnriD4mFzGov-oovb4chfzDAnlrrxL-v_1BLxV3jC9pb60YsTB671VnVP-kkwmHld0qT4zoJsnz2HJbdb2GpeuIl_aSwalGwB_Gmu5lMYGyH43b-dAG3UWu3Xs5YiWcMEGTgDLDwlWFDOUzeNEOddaXQrPzSm-CeVZvq2ceE5uxlJfg3B20-I3jfDI6ya1DJ30-ZfYM5AcRxmbvdmSwlTwYzfYg1FzC5l7NsWsiCq5d85tx1VBm9I9Rt0R12fv6kCBnr4rWd_8nvMjKo4TnSi_1fllGRge6HmKofZpIYo4YnfA',
+                  'Content-Type': 'application/json',
+                  'Predix-Zone-Id':'b5178b7d-e885-4480-bdd9-73d1a66f7f94'
+                 }
+     });
+ }
+});
+
+myApp.controller('AngularJSCtrl', function($scope, dataService) {
+    $scope.data = null;
+    dataService.getData().then(function(dataResponse) {
+        $scope.data = dataResponse;
+    });
+});
+</script>
+
+</body>
+</html>
+
