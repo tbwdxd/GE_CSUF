@@ -1,3 +1,4 @@
+// I use factory I think its the same as service though
 myApp.factory('catalogservice', ['$http',function($http) {
     delete $http.defaults.headers.common['X-Requested-With'];
     return $http({
