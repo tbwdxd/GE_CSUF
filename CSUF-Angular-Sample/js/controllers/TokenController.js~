@@ -7,7 +7,7 @@ myApp.controller('TokenController', ['$scope', 'gettokenservice', function($scop
     });
     // If the catalogservice is failed then return error message
     gettokenservice.error(function(dataResponse) {
-        $scope.token = "Error";
+        $scope.token = dataResponse.error;
     });
 }]);
 

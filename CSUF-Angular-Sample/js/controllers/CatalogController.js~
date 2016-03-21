@@ -10,7 +10,8 @@ myApp.controller('CatalogController', ['$scope', 'catalogservice', function($sco
         $scope.catalogData = dataResponse;
     });
     // If the catalogservice is failed then return error message
-    catalogservice.error(function(dataResponse) {
-        $scope.catalogData = dataResponse;
+    catalogservice.error(function(errorResponse) {
+        $scope.catalogData = errorResponse;
     });
 }]);
+
