@@ -5,15 +5,17 @@
 
 <div ng-app="myApp"> 
 
-<p>Today's welcome message is:</p>
 
+<p>Token is:</p>
+<div ng-controller="TokenController">
+<p>{{token.access_token}}</p>
+
+
+
+<p>Today's welcome message is:</p>
 <div ng-controller="CatalogController">
 <p>{{catalogData}}</p>
 
-<p>Token is:</p>
-
-<div ng-controller="TokenController">
-<p>{{token}}</p>
 
 
 </div>
