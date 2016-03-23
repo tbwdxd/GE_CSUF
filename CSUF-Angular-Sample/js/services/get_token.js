@@ -8,7 +8,7 @@ myApp.factory('gettokenservice', ['$http',function($http) {
                       'Content-Type': 'application/x-www-form-urlencoded',
                       'x-tenant': 'bc026551-76ad-49c9-a2b5-664e5cc6e1c0'
                      },
-            data: 'client_id=admin&grant_type=client_credentials&client_secret=myadminsecret',
+            data: 'client_id=admin&grant_type=client_credentials&client_secret=myadminsecret'
             }
         return $http(req);
     }
