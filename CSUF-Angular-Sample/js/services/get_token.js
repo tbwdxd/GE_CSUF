@@ -4,7 +4,8 @@ myApp.factory('gettokenservice', ['$http',function($http) {
         var req = {
             method: 'POST',
             url: 'https://bc026551-76ad-49c9-a2b5-664e5cc6e1c0.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token',
-            headers: {'Authorization': 'Basic YWRtaW46PG15YWRtaW5zZWNyZXQ=',
+            headers: {
+                      'Authorization': 'Basic YWRtaW46PG15YWRtaW5zZWNyZXQ=',
                       'Content-Type': 'application/x-www-form-urlencoded',
                       'x-tenant': 'bc026551-76ad-49c9-a2b5-664e5cc6e1c0'
                      },
