@@ -43,21 +43,22 @@ define([
             ]
         };
 
-         $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-            if (angular.isObject(error) && angular.isString(error.code)) {
-               switch (error.code) {
-                     case 'UNAUTHORIZED':
-                         //redirect
-                         PredixUserService.login(toState);
-                         break;
-                     default:
-                         //go to other error state
-                 }
-             }
-             else {
-                 // unexpected error
-             }
-         });
+
+       // $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+        //     if (angular.isObject(error) && angular.isString(error.code)) {
+        //         switch (error.code) {
+        //             case 'UNAUTHORIZED':
+        //                 //redirect
+        //                 predixUserService.login(toState);
+        //                 break;
+        //             default:
+        //                 //go to other error state
+        //         }
+        //     }
+        //     else {
+        //         // unexpected error
+        //     }
+        // });
     }]);
 
 

@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: ecohack
+  - name: csuf_ecohack
     buildpack: predix_openresty_buildpack
     path: dist
     memory: 64M
@@ -8,7 +8,6 @@ applications:
     services: # add any services that you are using here
             - csuf_redis # change this to your redis service instance name
             - csuf_viewsService # change this to your view service instance name
-#            - eco_asset # change this to your asset service instance name
     env:
-      UAA_SERVER_URL: https://fcaefc3a-c584-4541-a099-14da989ccc82.predix-uaa.run.aws-usw02-pr.ice.predix.io/ # change to your UAA instance url
+      UAA_SERVER_URL: https://fcaefc3a-c584-4541-a099-14da989ccc82.predix-uaa.run.aws-usw02-pr.ice.predix.io 
       REDIS: redis-1

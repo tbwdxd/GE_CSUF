@@ -9,10 +9,10 @@ var config = {
    * Please update the following uaa configuration for your solution
    */
   uaa: {
-    clientId: 'csuf_client',
-    serverUrl: 'https://fcaefc3a-c584-4541-a099-14da989ccc82.predix-uaa.run.aws-usw02-pr.ice.predix.io/',
+    clientId: 'luis_client',
+    serverUrl: 'https://fcaefc3a-c584-4541-a099-14da989ccc82.predix-uaa.run.aws-usw02-pr.ice.predix.io',
     defaultClientRoute: '/about',
-    base64ClientCredential: 'ImNzdWZfY2xpZW50OmNzdWZfZWNvaGFjayI='
+    base64ClientCredential: 'bHVpc19jbGllbnQ6Y3N1Zg=='
   },
   /**
    * --------- ADD YOUR SECURE ROUTES HERE ------------

@@ -1,1 +1,3 @@
-"csuf_client:csuf_ecohack"
+luis_client:csuf
+
+user: fullerton:csuf
