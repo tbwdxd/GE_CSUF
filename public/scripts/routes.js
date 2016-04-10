@@ -14,7 +14,23 @@ define(['angular', 'angular-ui-router'], function(angular) {
          * This is where the name of the route is matched to the controller and view template.
          */
         $stateProvider
+        .state('secure', {
+                template: '<ui-view/>',
+                abstract: true,
+                resolve: {
+                    authenticated: ['$q', 'PredixUserService', function ($q, predixUserService) {
+                        var deferred = $q.defer();
+                        predixUserService.isAuthenticated().then(function(userInfo){
+                            deferred.resolve(userInfo);
+                        }, function(){
+                            deferred.reject({code: 'UNAUTHORIZED'});
+                        });
+                        return deferred.promise;
+                    }]
+                }
+            })
             .state('dashboards', {
+            	 parent: 'secure',
                 url: '/dashboards',
                 templateUrl: 'views/dashboards.html',
                 controller: 'DashboardsCtrl'

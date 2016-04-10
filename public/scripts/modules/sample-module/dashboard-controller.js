@@ -6,7 +6,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
         $scope.tsData = null;
         $http({
             method: 'GET',
-            url: '../sample-data/core-vibe-rear-cruise.json'//change this url to new json file location
+            url: '../sample-data/solardata.json'//change this url to new json file location
         }).
         success(function(data, status, headers, config) {
             $scope.tsData = data;
