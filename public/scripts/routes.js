@@ -34,6 +34,11 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 url: '/dashboards',
                 templateUrl: 'views/dashboards.html',
                 controller: 'DashboardsCtrl'
+            })
+            .state('home', {
+            	url: '/',
+            	templateUrl: 'views/home.html',
+            	controller: 'HomeCtrl'
             });
 
 

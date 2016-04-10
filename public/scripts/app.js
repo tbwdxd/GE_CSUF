@@ -39,6 +39,7 @@ define([
             name: 'Predix Seed',
             session: {},
             tabs: [
+            	 {icon: 'fa-home', state: 'home', label: 'Home'},
                 {icon: 'fa-tachometer', state: 'dashboards', label: 'EcoDashboard'}
             ]
         };
