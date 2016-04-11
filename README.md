@@ -1,4 +1,5 @@
 #Comments for Ecomagination Hackathon
+http://fullerton-ecohack.run.aws-usw02-pr.ice.predix.io/
 Welcome!  This is the starter seed for the Ecomagination Hackathon.  Below are the directions on how to connect the seed to your Predix Services.  For this Hackathon, the following files were edited:
 
 	-manifest.yml
