@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: fullerton_ecohack
+  - name: fullerton_ecohack_shelley
     buildpack: predix_openresty_buildpack
     path: dist
     memory: 64M
