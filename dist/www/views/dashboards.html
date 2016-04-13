@@ -1,0 +1,138 @@
+<div id="Dashboard" ng-controller="DashboardsCtrl">
+   <px-card>
+      <h1 align="center" size=20>
+         <br><br>
+         Welcome to the Ecomagination Hackathon!
+      </h1>
+   </px-card>
+   <px-card>
+      <br>
+      <px-dashboard view-service-base-url="{{viewServiceBaseUrl}}" selected-deck-id="{{selectedDeck.id}}" context="{{context}}"></px-dashboard>
+      <px-chart>
+         <px-chart-series-line id="Time Series Plot of Data" data={{tsData}}>
+         </px-chart-series-line>
+      </px-chart>
+   </px-card>
+   <px-card class="background">
+      <br>
+      <span class="ecomagination">Ecomagination</span>
+      <br><br>
+      <style type="text/css">
+         .background {
+         background-color: rgb(225, 226, 229);
+         }
+         .ecomagination{
+         font-size: 30px;
+         font-family: "GE Inspira";
+         font-style: bold;
+         color: rgb(13, 100, 171);
+         }
+         div.img_holder img {
+         float: center;
+         position: relative;
+         margin-top: -10%;
+         margin-left: 10px;
+         }
+         div.imgs img{
+         float: center;
+         position: relative;
+         }
+         .Group_1 {
+         position: relative;
+         margin: 10px;
+         display: inline-block;
+         z-index: 50;
+         }
+         .Caption {
+         font-size: 18px;
+         font-family: "GE Inspira";
+         color: rgb(55, 44, 58);
+         font-style: italic;
+         line-height: 1.2;
+         text-align: center;
+         position: relative;
+         z-index: 49;
+         }
+         .Numerical_Value {
+         font-size: 30px;
+         font-family: "GE Inspira";
+         color: rgb(0, 89, 188);
+         line-height: 2.033;
+         text-align: left;
+         position: relative;
+         float:right;
+         margin-right: 15px;
+         z-index: 48;
+         }
+         .Green_Label {
+         font-size: 16px;
+         color: rgb(103, 171, 8);
+         font-weight: bold;
+         line-height: 3.625;
+         text-align: left;
+         position: relative;
+         float: right;
+         margin-right: -23%;
+         margin-top: 10px;
+         z-index: 47;
+         }
+         .Rounded_Rectangle {
+         border-width: 1px;
+         border-color: rgb(229, 229, 229);
+         border-style: solid;
+         border-radius: 6px;
+         background-image: -moz-linear-gradient( 90deg, rgb(243,255,227) 0%, rgb(255,255,255) 100%);
+         background-image: -webkit-linear-gradient( 90deg, rgb(243,255,227) 0%, rgb(255,255,255) 100%);
+         background-image: -ms-linear-gradient( 90deg, rgb(243,255,227) 0%, rgb(255,255,255) 100%);
+         box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.09);
+         position: relative;
+         width: 374px;
+         height: 219px;
+         z-index: 43;
+         }
+      </style>
+      <center>
+         <div class="imgs">
+            <div class="Group_1">
+               <div class="Rounded_Rectangle">
+                  <div class="img_holder">
+                     <img src="../images/car.png">
+                  </div>
+                  <div class="Caption">
+                     "Enough fuel to power <br>all the cars in SF for one week"
+                  </div>
+                  <div class="Numerical_Value">14,182</div>
+                  <br>
+                  <div class="Green_Label">Gal. of Fuel Use Avoided</div>
+               </div>
+            </div>
+            <div class="Group_1">
+               <div class="Rounded_Rectangle">
+                  <div class="img_holder">
+                     <img src="../images/tree.png">
+                  </div>
+                  <div class="Caption">
+                     "Enough to save 10% of the trees <br>in Golden Gate Park"
+                  </div>
+                  <div class="Numerical_Value">23,891</div>
+                  <br>
+                  <div class="Green_Label">Tons of CO<sup>2</sup> Avoided</div>
+               </div>
+            </div>
+            <div class="Group_1">
+               <div class="Rounded_Rectangle">
+                  <div class="img_holder">
+                     <img src="../images/baseball.png">
+                  </div>
+                  <div class="Caption">
+                     "Enough to power the Giants' <br>AT&T Park for 5 years"
+                  </div>
+                  <div class="Numerical_Value">67,150</div>
+                  <br>
+                  <div class="Green_Label">Dollars in Energy Savings</div>
+               </div>
+            </div>
+         </div>
+      </center>
+   </px-card>
+</div>
