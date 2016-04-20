@@ -5,15 +5,17 @@
 
 <div ng-app="myApp"> 
 
-<p>Today's welcome message is:</p>
-
-<div ng-controller="CatalogController">
-<p>{{catalogData}}</p>
 
 <p>Token is:</p>
-
 <div ng-controller="TokenController">
-<p>{{token}}</p>
+<p>{{token.access_token}}</p>
+
+
+
+<p>Today's welcome message is:</p>
+<!--div ng-controller="CatalogController"-->
+<p>{{catalogData}}</p>
+
 
 <p>Test AngularJS:</p>
 <div ng-controller="testController">
@@ -25,7 +27,7 @@
     <script src="js/app.js"></script>
     
     <!-- Controllers -->
-    <script src="js/controllers/CatalogController.js"></script>
+    <!--script src="js/controllers/CatalogController.js"></script-->
     <script src="js/controllers/TokenController.js"></script>    
     <script src="js/controllers/testController.js"></script>    
 
