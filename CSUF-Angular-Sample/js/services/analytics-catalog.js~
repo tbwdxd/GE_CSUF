@@ -10,16 +10,7 @@ myApp.factory('catalogservice', ['$http',
                   'Predix-Zone-Id': 'b5178b7d-e885-4480-bdd9-73d1a66f7f94'
             }
         }
-        $http(req).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-     return "sucess";
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-
-     return "Fail";
-  });
+        return $http(req);
     }
 ]
 );

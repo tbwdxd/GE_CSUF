@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 <body>
 
 <div ng-app="myApp"> 
@@ -15,6 +15,9 @@
 <div ng-controller="TokenController">
 <p>{{token}}</p>
 
+<p>Test AngularJS:</p>
+<div ng-controller="testController">
+<p>{{test}}</p>
 
 </div>
 
@@ -24,6 +27,7 @@
     <!-- Controllers -->
     <script src="js/controllers/CatalogController.js"></script>
     <script src="js/controllers/TokenController.js"></script>    
+    <script src="js/controllers/testController.js"></script>    
 
     <!-- Directives -->
     <script src="js/directives/"></script>
