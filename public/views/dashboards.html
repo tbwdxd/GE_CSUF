@@ -1,25 +1,35 @@
+
 <div id="Dashboard" ng-controller="DashboardsCtrl">
+
+<script type="text/javascript">
+    var el = document.querySelector("#my-range-picker");
+    el.addEventListener("range-changed", function(e) {
+    		var scope = angular.element(document.getElementById("Dashboard")).scope();
+    		var from = +new Date(e.detail.value.from);
+    		var to = +new Date(e.detail.value.to);
+       	scope.$apply(function() {
+       		scope.update(from, to);
+       	});
+       	var table = document.querySelector("#the-chart");
+   		table.refreshAllSeries();
+
+    });
+</script>
+
    <px-card>
       <h1 align="center" size=20>
          <br><br>
-         Welcome to the Ecomagination Hackathon!
+         CSUF's Solar Panel Application!
       </h1>
-   </px-card>
-   <px-card>
-      <br>
-      <px-dashboard view-service-base-url="{{viewServiceBaseUrl}}" selected-deck-id="{{selectedDeck.id}}" context="{{context}}"></px-dashboard>
-      <px-chart>
-         <px-chart-series-line id="Time Series Plot of Data" data={{tsData}}>
-         </px-chart-series-line>
-      </px-chart>
    </px-card>
    <px-card class="background">
       <br>
-      <span class="ecomagination">Ecomagination</span>
+      <span class="ecomagination">Pick a time Range!!</span>
       <br><br>
       <style type="text/css">
          .background {
          background-color: rgb(225, 226, 229);
+         height: 500px;
          }
          .ecomagination{
          font-size: 30px;
@@ -89,50 +99,34 @@
          width: 374px;
          height: 219px;
          z-index: 43;
+         float: left;
          }
       </style>
       <center>
-         <div class="imgs">
-            <div class="Group_1">
-               <div class="Rounded_Rectangle">
-                  <div class="img_holder">
-                     <img src="../images/car.png">
-                  </div>
-                  <div class="Caption">
-                     "Enough fuel to power <br>all the cars in SF for one week"
-                  </div>
-                  <div class="Numerical_Value">14,182</div>
-                  <br>
-                  <div class="Green_Label">Gal. of Fuel Use Avoided</div>
-               </div>
-            </div>
-            <div class="Group_1">
-               <div class="Rounded_Rectangle">
-                  <div class="img_holder">
-                     <img src="../images/tree.png">
-                  </div>
-                  <div class="Caption">
-                     "Enough to save 10% of the trees <br>in Golden Gate Park"
-                  </div>
-                  <div class="Numerical_Value">23,891</div>
-                  <br>
-                  <div class="Green_Label">Tons of CO<sup>2</sup> Avoided</div>
-               </div>
-            </div>
-            <div class="Group_1">
-               <div class="Rounded_Rectangle">
-                  <div class="img_holder">
-                     <img src="../images/baseball.png">
-                  </div>
-                  <div class="Caption">
-                     "Enough to power the Giants' <br>AT&T Park for 5 years"
-                  </div>
-                  <div class="Numerical_Value">67,150</div>
-                  <br>
-                  <div class="Green_Label">Dollars in Energy Savings</div>
-               </div>
-            </div>
-         </div>
-      </center>
+      <px-rangepicker id="my-range-picker">
+      
+    </px-rangepicker>
+      <div><h3>Solar</h3>
+      Average: {{solarAverage}}kWh	Total Consumption: {{solarTotal}}kWh Total Cost: ${{solarCost}}
+      </div>
+      <div><h3>Trigen</h3>
+      Average: {{trigenAverage}}kWh	Total Consumption: {{trigenTotal}}kWh Total Cost: ${{trigenCost}}
+      </div>
+      <div><h3>SCE</h3>
+      Average: {{sceAverage}}kWh	Total Consumption: {{sceTotal}}kWh Total Cost: ${{sceCost}}
+      </div>
+	
+		
+   </px-card>
+      <px-card>
+      <br>
+      <px-chart id="the-chart">
+         <px-chart-series-line id="Solar Output" data={{solarData}}>
+         </px-chart-series-line>
+         <px-chart-series-line id="Trigen Output" data={{trigenData}}>
+         </px-chart-series-line>
+         <px-chart-series-line id="SCE Output" data={{sceData}}>
+         </px-chart-series-line>
+      </px-chart>
    </px-card>
 </div>

@@ -3,14 +3,101 @@ define(['angular', './sample-module'], function (angular, controllers) {
 
     // Controller definition
     controllers.controller('DashboardsCtrl', ['$scope', '$log', '$http', 'PredixAssetService', 'PredixViewService', function($scope, $log, $http, PredixAssetService, PredixViewService) {
-        $scope.tsData = null;
+        	$scope.tsData = null;
+        	
+        	// Chart Values
+        	$scope.solarData = null;
+   		$scope.trigenData = null;
+   		$scope.sceData = null;
+   		
+   		// Total Consumption
+   		$scope.solarTotal = null;
+   		$scope.sceTotal = null;
+   		$scope.trigenTotal = null;
+   		
+   		// Average Values
+   		$scope.solarAverage = null;
+   		$scope.sceAverage = null;
+   		$scope.trigenAverage = null;
+   		
+   		// Cost Values
+   		$scope.solarCost = null;
+   		$scope.sceCost = null;
+   		$scope.trigenCost = null;
+   		
+   		// Price per kilowatt hour
+   		$scope.price = 0.12
+   		
+   		
         $http({
             method: 'GET',
-            url: '../sample-data/solardata.json'//change this url to new json file location
+            url: '../sample-data/completeData.json'//change this url to new json file location
         }).
         success(function(data, status, headers, config) {
             $scope.tsData = data;
         }).error(function(data, status, headers, config) {});
+        
+        
+        // This will update the values when the date range has been changed
+        $scope.update = function(fromTime, toTime) {
+        	var tempsce = [];
+        	var tempsolar = [];
+        	var temptrigen = [];
+        	var counter = 0.0;
+        	var totalsce = 0.0;
+        	var totaltrigen = 0.0;
+         var totalsolar = 0.0;
+        	
+        	  angular.forEach($scope.tsData, function(value, index){
+        	  			var sce = [];
+        	  			var solar = [];
+        	  			var trigen = [];
+
+        	  			var currTime = parseInt(value.Timestamp) * 1000
+        	  			if (currTime >= fromTime && currTime <= toTime) {
+        	  					try {
+        	  						
+        	  						// This is for the chart
+        	  						sce.push(currTime, parseFloat(value.SCE));
+        	  						solar.push(currTime, parseFloat(value.Solar));
+        	  						trigen.push(currTime, parseFloat(value.Trigen) * -1);
+									temptrigen.push(trigen);
+        	  						tempsce.push(sce);
+        	  						tempsolar.push(solar);
+        	  						
+        	  						// Calculate the averages and total cost
+        	  						totalsce += parseFloat(value.SCE);
+									totaltrigen += (parseFloat(value.Trigen) * -1);
+									totalsolar += parseFloat(value.Solar);
+									counter += 1
+        	  						}
+        	  						catch(err) {
+        	  								console.log("Error at index", index);
+        	  							}
+        	  			}
+   			});
+   			
+   			
+   			// Place all calculated values into $scope variables
+   			$scope.solarData = angular.toJson(tempsolar);
+   			$scope.trigenData = angular.toJson(temptrigen);
+   			$scope.sceData = angular.toJson(tempsce);
+   			
+   			$scope.solarTotal = totalsolar;
+   			$scope.sceTotal = totalsce;
+   			$scope.trigenTotal = totaltrigen;
+   			
+   			$scope.solarCost = totalsolar * $scope.price;
+   			$scope.sceCost = totalsce * $scope.price;
+   			$scope.trigenCost = totaltrigen * $scope.price;
+   			
+   			$scope.solarAverage = totalsolar / counter;
+   			$scope.sceAverage = totalsce / counter;
+   			$scope.trigenAverage = totaltrigen / counter;
+        	
+        	};
+        	 console.log($scope.solarData);
+  
 
         /*PredixAssetService.getAssetsByParentId('root').then(function (initialContext) {
 
