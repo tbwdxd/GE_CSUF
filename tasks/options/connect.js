@@ -25,7 +25,12 @@ var config = {
     '/api/view-service(.*)': {
       url: 'https://predix-views.run.aws-usw02-pr.ice.predix.io/api$1',
       instanceId: '15fc84e2-8354-4b4e-bd00-6085cf79a36c'
-    }
+     },
+     '/api/datapoints': {
+     	 url: 'https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io/v1/datapoints/',
+    	   instanceId: 'b7028022-acfd-41bd-98b7-7865f0c499fe',
+				 pathRewrite: { '^/api/v1/datapoints': ''}
+    	 }
   }
 };
 

@@ -4,6 +4,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
     // Controller definition
     controllers.controller('DashboardsCtrl', ['$scope', '$log', '$http', 'PredixAssetService', 'PredixViewService', function($scope, $log, $http, PredixAssetService, PredixViewService) {
         $scope.tsData = null;
+        $scope.testData = null;
         $http({
             method: 'GET',
             url: '../sample-data/solardata.json'//change this url to new json file location
@@ -11,6 +12,16 @@ define(['angular', './sample-module'], function (angular, controllers) {
         success(function(data, status, headers, config) {
             $scope.tsData = data;
         }).error(function(data, status, headers, config) {});
+        
+         $http({
+            method: 'POST',
+            url: '/api/v1/datapoints',//change this url to new json file location
+            data: '{"start":"1y-ago","tags":[{"name":"Compressor-2015:CompressionRatio","groups":[{"name":"quality"}]}]}'
+        }).then(function(predixTimeSeriesData){
+           $scope.testData = predixTimeSeriesData;
+         });
+        
+        
 
         /*PredixAssetService.getAssetsByParentId('root').then(function (initialContext) {
 
