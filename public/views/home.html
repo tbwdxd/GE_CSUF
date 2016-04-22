@@ -1,43 +1,19 @@
 <div ng-controller="HomeCtrl">
-
+	
 <style type="text/css">
-	.background {
-	background-color: rgb(0, 43, 84);
-	box-shadow: 0px 10px 5px rgba(225, 112, 0, 0.5);
-	}
-	.headers {
-	color: white;
-	font: Open Sans;
-	position: relative;
-	text-align: center;
-	text-shadow: 2px 2px black;
-	}
-	.imgHolder {
-	height: 8em;
-	width: 8em;
-	top: 10px;
-	float: left;
-	}
-	.mainInfo {
-	height: 30em;
-	}
-	.secondHead {
-	color: black;
-	font: Gotham;
-	text-align: left;
-	text-shadow: 2px 2px 5px rgb(225, 112 , 0);
-	top: 5em;
-	}
+#header .underbar h1::after {
+	background: rgba(0, 0, 0, 0.3);
+	content: " ";
+	position: absolute;
+	display: block;
+	width: 30em;
+	height: 2px;
+}
 </style>
-<px-card class="background">
-<div class="imgHolder"><img src="/images/csuf-seal.png" alt="Fullerton Seal"></div>
-<br><br><h1 class="headers">
-CSUF's Solar Panel Application</h1>
-</px-card>
 
 <px-card class="mainInfo">
-<h1 class="secondHead">Solar Panel Optimization</h1>
-<p>Add info on how we are optimizating the data</p> 
+<h1 class="underbar" id="header">Solar Panel Optimization</h1>
+<p>Add info on how we are optimizating the data. Shelley is awesome. Please log in to access data.</p> 
 </px-card>
 
 

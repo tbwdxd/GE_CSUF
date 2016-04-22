@@ -39,6 +39,11 @@ define(['angular', 'angular-ui-router'], function(angular) {
             	url: '/home',
             	templateUrl: 'views/home.html',
             	controller: 'HomeCtrl'
+            })
+	    .state('about', {
+            	url: '/about',
+            	templateUrl: 'views/about.html',
+            	controller: 'HomeCtrl'
             });
 
 
