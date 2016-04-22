@@ -39,26 +39,27 @@ define([
             name: 'Predix Seed',
             session: {},
             tabs: [
-            	 {icon: 'fa-home', state: 'home', label: 'Home'},
-                {icon: 'fa-tachometer', state: 'dashboards', label: 'EcoDashboard'}
+				{icon: 'fa-home', state: 'home', label: 'Home'},
+				{icon: 'fa-tachometer', state: 'dashboards', label: 'EcoDashboard'},
+				{icon: 'fa-group', state: 'team', label: 'About Us'}
             ]
         };
 
-         $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-             if (angular.isObject(error) && angular.isString(error.code)) {
-                 switch (error.code) {
-                     case 'UNAUTHORIZED':
+        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+                if (angular.isObject(error) && angular.isString(error.code)) {
+                    switch (error.code) {
+                        case 'UNAUTHORIZED':
                          //redirect
-                         predixUserService.login(toState);
-                         break;
-                     default:
+                            predixUserService.login(toState);
+                            break;
+                        default:
                          //go to other error state
-                 }
-             }
-             else {
+                    }
+                }
+                else {
                  // unexpected error
-             }
-         });
+                }
+            });
     }]);
 
 

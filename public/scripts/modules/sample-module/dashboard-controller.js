@@ -12,7 +12,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
             $scope.tsData = data;
         }).error(function(data, status, headers, config) {});
 
-        /*PredixAssetService.getAssetsByParentId('root').then(function (initialContext) {
+        PredixAssetService.getAssetsByParentId('root').then(function (initialContext) {
 
             //pre-select the 1st asset
             initialContext.data[0].selectedAsset = true;
@@ -85,6 +85,6 @@ define(['angular', './sample-module'], function (angular, controllers) {
             itemOpenHandler: $scope.openContext,
             getChildren: $scope.getChildren
             // (optional) click handler: itemClickHandler: $scope.clickHandler
-        };*/
+        };
     }]);
 });

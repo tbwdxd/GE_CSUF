@@ -72,7 +72,8 @@ html {
   /* [5] */
   -webkit-font-smoothing: antialiased;
   /* [5] */ }
-
+	
+	
 /**
  * Remove default margin.
  */
@@ -2960,12 +2961,12 @@ button.btn {
   display: flex; }
 
 :root {
-  --px-app-nav-background-color: #242326;
+  --px-app-nav-background-color: #293c55; /*Navy blue background color*/
   --px-app-nav-link-text-color: white;
-  --px-app-nav-link-selected-color: #086e87;
-  --px-app-nav-link-selected-active-color: #0986a4;
-  --px-app-nav-link-hover-color: #525156;
-  --px-app-nav-link-active-color: #3573c5;
+  --px-app-nav-link-selected-color: #081F30; /*#086e87*/
+  --px-app-nav-link-selected-active-color: #081F30; /*#0986a4*/
+  --px-app-nav-link-hover-color: #081F30; /*#525156*/
+  --px-app-nav-link-active-color: #081F30; /*#3573c5*/
   --px-font-family: "GE Inspira Sans", sans-serif; }
 
 @font-face {
@@ -3079,7 +3080,8 @@ body {
 [role=banner] {
   width: 100%;
   display: block;
-  margin: auto; }
+  margin: auto;
+  background-color: #293c55;}
   [role=banner] h1, [role=banner] h2 {
     font-size: 1.6rem;
     line-height: 1.6666666667;
@@ -3102,12 +3104,13 @@ body {
   position: relative;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex; 
+  margin-top: 60px;}
 
 main {
   min-height: calc(100vh - 8rem);
   margin-left: 0;
-  background-color: #8b8d8f;
+  background-color: white; /*content bg*/
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1; }

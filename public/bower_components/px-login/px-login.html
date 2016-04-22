@@ -28,7 +28,7 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
   </script>
   <link rel="import" type="css" href="css/px-login.css"/>
   <template>
-    <div id="logincontainer" class="login">
+    <!-- <div id="logincontainer" class="login"> -->
       <template is="dom-if" if="{{!userInfo.user_name}}">
         <button class="btn btn--bare" on-click="loginHandler">
           <i class="fa fa-user text--center u-mr--"></i>
@@ -39,7 +39,7 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
         <button class="btn btn--bare">
           <i class="fa fa-user text--center"></i>
           <span class="u-mh--">{{userInfo.user_name}}</span>
-          <i class="fa fa-angle-up"></i>
+          <i class="fa fa-angle-down"></i>
         </button>
         <ul class="dropdown-menu list-bare">
           <template is="dom-repeat" items="{{menuItems}}">
@@ -48,7 +48,7 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
           <li on-click="logoutHandler"><a>Sign Out</a></li>
         </ul>
       </template>
-    </div>
+    <!-- </div> -->
   </template>
 </dom-module>
 
