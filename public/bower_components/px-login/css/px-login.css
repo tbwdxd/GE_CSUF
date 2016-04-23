@@ -694,7 +694,7 @@ span + .fa {
   /*bottom: 3.5rem;*/
   width: calc(14.6rem - 7rem); /*calc(14.6rem - 4rem)*/
   border: 1px solid;
-  border-radius: 3px;
+  /*border-radius: 3px;*/
   padding: 0.6666666667rem 0;
   opacity: 0;
   transition: opacity 0.25s ease-out; }
@@ -738,7 +738,7 @@ span + .fa {
 
 :host {
   color: white;
-  background-color: #293c55; } /*var(--px-app-nav-background-color)*/
+  } /*var(--px-app-nav-background-color)*/
 
 .login {
   background-color: inherit; }

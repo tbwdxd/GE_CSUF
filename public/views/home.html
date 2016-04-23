@@ -1,20 +1,71 @@
-<div ng-controller="HomeCtrl">
-	
 <style type="text/css">
-#header .underbar h1::after {
+/*.underbar h1:after {
 	background: rgba(0, 0, 0, 0.3);
 	content: " ";
 	position: absolute;
 	display: block;
 	width: 30em;
 	height: 2px;
+}*/
+	
+.header {
+	/*background-color:rgba(255,255,255,0.7);*/
+	height:130px;
+	position:absolute;
+	width:100%;
+	z-index:2;
+	clear:none;
+	text-align:center;
+	padding:10px;
+	top: 0;
+	margin-top: 15%;
+}
+	
+h1  {
+	text-transform: uppercase;
+	color: white;
+	font-size: 45px;
+	text-shadow: 1px 1px 10px #000;
+}
+p {
+	color: white;
+}
+	
+.bg_container {
+	position: relative;
+	display: inline-block;
+}
+	
+.bg_img {
+	width:100%;
+	max-height: 705px;
+}
+	
+.bg_pattern { 
+	background-image: url(/images/bg_pattern.png); 
+	position: absolute; 
+	opacity: 0.8; 
+	left: 0px; 
+	top: 0px; 
+	width: 100%; 
+	height: 100%; 
+	max-height: 705px;
 }
 </style>
 
-<px-card class="mainInfo">
-<h1 class="underbar" id="header">Solar Panel Optimization</h1>
-<p>Add info on how we are optimizating the data. Shelley is awesome. Please log in to access data.</p> 
-</px-card>
+<div ng-controller="HomeCtrl">
+<div class="bg_container">
+	<img src="/images/solar-panels.jpg" class="bg_img">
+	<div class="bg_pattern"></div>
+</div>
+<div class="header">
+	<h1>Solar Panel Optimization</h1>
+	<p>Add info on how we are optimizating the data. Shelley is awesome. Please log in to access data.</p> 
+</div>
+	
+<!--<px-card class="mainInfo header">
+
+</px-card>-->
 
 
 </div>
