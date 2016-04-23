@@ -40,7 +40,9 @@ define([
             session: {},
             tabs: [
             	 {icon: 'fa-home', state: 'home', label: 'Home'},
-                {icon: 'fa-tachometer', state: 'dashboards', label: 'EcoDashboard'},
+                {icon: 'fa-tachometer', state: 'dashboards', label: 'EcoDashboard', subitems: [
+                	{state: 'total', label: 'Chart'}
+                	]},
 		{icon: 'fa-group', state: 'about', label: 'About Us'}
             ]
         };
