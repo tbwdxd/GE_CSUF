@@ -11,7 +11,7 @@ var config = {
   uaa: {
     clientId: 'fullertonClient',
     serverUrl: 'https://fcaefc3a-c584-4541-a099-14da989ccc82.predix-uaa.run.aws-usw02-pr.ice.predix.io',
-    defaultClientRoute: '/',
+    defaultClientRoute: '/home',
     base64ClientCredential: 'ZnVsbGVydG9uQ2xpZW50OnIzWlozdmxscjVPWGhOd2hsL3F4RWtGbDdvSGpTN1B1YWNRYUN4bVg0QTg9'
   },
   /**
@@ -28,8 +28,8 @@ var config = {
      },
      '/api/datapoints': {
      	 url: 'https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io/v1/datapoints/',
-    	   instanceId: 'b7028022-acfd-41bd-98b7-7865f0c499fe',
-				 pathRewrite: { '^/api/v1/datapoints': ''}
+    	 instanceId: 'b7028022-acfd-41bd-98b7-7865f0c499fe',
+		 pathRewrite: { '^/api/v1/datapoints': ''}
     	 }
   }
 };

@@ -1,0 +1,37 @@
+<div ng-controller="TableCtrl"></div>
+
+<px-card>
+<body>
+<h1 align="center" size="20"><br><br><br>Monthly Ouputs</h1>
+
+<px-data-table striped filterable enable-column-resize table-data="{{avgData}}">
+	<px-data-table-column name="month" filterable><px-data-table-column>
+	<px-data-table-column name="year" filterable><px-data-table-column>
+	<px-data-table-column name="sce"><px-data-table-column>
+	<px-data-table-column name="trigen"><px-data-table-column>
+	<px-data-table-column name="solar"><px-data-table-column>
+</px-data-table>
+
+<table>
+<label>Search Month: <input ng-model="searchMonth"></label>
+<label>Search Year: <input ng-model="searchYear"></label>
+<tr>
+<th>Month</th>
+<th>Year</th>
+<th>SCE</th>
+<th>Trigen</th>
+<th>Solar</th>
+<tr ng-repeat="data in avgData | filter:searchMonth | filter:searchYear">
+	<td>{{data.month}}</td>
+	<td>{{data.year}}</td>
+	<td>{{data.sce}}kWh</td>
+	<td>{{data.trigen}}kWh</td>
+	<td>{{data.solar}}kWh</td>
+</tr>
+</table>
+
+</body>
+</px-card>
+
+
+</div>

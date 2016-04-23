@@ -29,21 +29,26 @@ define(['angular', 'angular-ui-router'], function(angular) {
                     }]
                 }
             })
+    		   .state('home', {
+            	url: '/home',
+            	templateUrl: 'views/home.html',
+            	controller: 'HomeCtrl'
+            })           
             .state('dashboards', {
             	 parent: 'secure',
                 url: '/dashboards',
                 templateUrl: 'views/dashboards.html',
                 controller: 'DashboardsCtrl'
             })
-            .state('home', {
-            	url: '/home',
-            	templateUrl: 'views/home.html',
-            	controller: 'HomeCtrl'
-            })
 	    .state('about', {
             	url: '/about',
             	templateUrl: 'views/about.html',
             	controller: 'HomeCtrl'
+            })
+		 .state('total', {
+            	url: '/total',
+            	templateUrl: 'views/total.html',
+            	controller: 'TableCtrl'
             });
 
 

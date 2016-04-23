@@ -98,9 +98,10 @@ define(['angular', './sample-module'], function (angular, controllers) {
   
          $http({
             method: 'POST',
-            url: '/api/v1/datapoints',//change this url to new json file location
+            url: '/api/v1/datapoints',
+            withCredentials: true,
             data: '{"start":"1y-ago","tags":[{"name":"Compressor-2015:CompressionRatio","groups":[{"name":"quality"}]}]}'
-        }).then(function(predixTimeSeriesData){
+        }).then(function(predixTimeSeriesData, status){
            $scope.testData = predixTimeSeriesData;
          });
         
