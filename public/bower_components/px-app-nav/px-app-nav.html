@@ -41,7 +41,7 @@ Nav bar / drawer for applications
             <ul class$="{{navitem.subitemlistclass}}">
               <template is="dom-repeat" items="{{navitem.subitems}}">
                 <li>
-                  <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler"><span class$="{{navitem.subitemclass}}">{{item.label}}</span></a>
+                  <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler"><span class$="{{navitem.subitemclass}}" style="padding-left: 1em; line-height: 3;">{{item.label}}</span></a>
                 </li>
               </template>
             </ul>

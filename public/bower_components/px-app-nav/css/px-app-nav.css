@@ -39,6 +39,7 @@ Predix branding rules go in px-app-nav-predix.scss, not in this file.
  * 5. Fonts on OSX will look more consistent with other systems that do not
  *    render text using sub-pixel anti-aliasing.
  */
+
 html {
   font-size: 0.9375em;
   /* [1] */
@@ -705,7 +706,7 @@ button.btn {
   .navbar__item > li li {
     line-height: 2; }
     .navbar__item > li li a {
-      padding-left: 2.7333333333em; }
+      /*padding-left: 2.7333333333em;*/ }
 
 .navbar__item a {
   display: block; }
@@ -791,7 +792,7 @@ button.btn {
   margin-left: 0 !important; }
 
 :host {
-  background-color: var(--px-app-nav-background-color); }
+  /*background-color: var(--px-app-nav-background-color);*/ }
 
 a {
   text-decoration: none;
