@@ -50,8 +50,8 @@ define(['angular', 'angular-ui-router'], function(angular) {
 
         $urlRouterProvider.otherwise(function ($injector) {
             var $state = $injector.get('$state');
-            document.querySelector('px-app-nav').markSelected('/dashboards');
-            $state.go('dashboards');
+            document.querySelector('px-app-nav').markSelected('/home');
+            $state.go('home');
         });
 
     }]);

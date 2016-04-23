@@ -39,9 +39,9 @@ define([
             name: 'Predix Seed',
             session: {},
             tabs: [
-            	 {icon: 'fa-home', state: 'home', label: 'Home'},
-                {icon: 'fa-tachometer', state: 'dashboards', label: 'EcoDashboard'},
-		{icon: 'fa-group', state: 'about', label: 'About Us'}
+            	 {state: 'home', label: 'Home'},
+                {state: 'dashboards', label: 'EcoDashboard'},
+				{state: 'about', label: 'About Us'}
             ]
         };
 

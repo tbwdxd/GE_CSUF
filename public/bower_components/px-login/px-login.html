@@ -31,13 +31,11 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
     <!-- <div id="logincontainer" class="login"> -->
       <template is="dom-if" if="{{!userInfo.user_name}}">
         <button class="btn btn--bare" on-click="loginHandler">
-          <i class="fa fa-user text--center u-mr--"></i>
           <span>Sign In</span>
         </button>
       </template>
       <template is="dom-if" if="{{userInfo.user_name}}">
         <button class="btn btn--bare">
-          <i class="fa fa-user text--center"></i>
           <span class="u-mh--">{{userInfo.user_name}}</span>
           <i class="fa fa-angle-down"></i>
         </button>

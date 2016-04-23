@@ -260,7 +260,7 @@ a {
  * Improve readability when focused and also mouse hovered in all browsers.
  */ }
   a:link, a:visited {
-    color: #3e87e8; }
+    color: #081F30; }
   a:hover {
     color: #3573c5; }
   a:active {
@@ -698,7 +698,7 @@ button.btn {
   float: left; }
   .navbar__item > li a {
     padding-right: 1em;
-    padding-left: 1.0666666667em; }
+    /*padding-left: 1.0666666667em;*/ }
   .navbar__item > li .fa {
     width: 1.5333333333rem;
     text-align: center; }
