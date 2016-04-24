@@ -46,6 +46,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
             	controller: 'HomeCtrl'
             })
 		 .state('total', {
+		 			parent: 'secure',
             	url: '/total',
             	templateUrl: 'views/total.html',
             	controller: 'TableCtrl'
