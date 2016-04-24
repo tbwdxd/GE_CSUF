@@ -1,19 +1,24 @@
-<div id="Dashboard" ng-controller="DashboardsCtrl">
-
 <script type="text/javascript">
     var el = document.querySelector("#my-range-picker");
+
     el.addEventListener("range-changed", function(e) {
     		var scope = angular.element(document.getElementById("Dashboard")).scope();
     		var from = +new Date(e.detail.value.from);
     		var to = +new Date(e.detail.value.to);
+    		console.log(from, to);
        	scope.$apply(function() {
        		scope.update(from, to);
        	});
-       	var table = document.querySelector("#the-chart");
+       	
+       	// Refreash the table
+			var table = document.querySelector("#the-chart");
    		table.refreshAllSeries();
 
     });
 </script>
+
+<div id="Dashboard" ng-controller="DashboardsCtrl">
+
 
 <style type="text/css">
 	h1 {
@@ -43,7 +48,7 @@
       <h1>Select a time range: </h1>
 	  <px-rangepicker id="my-range-picker"
 					  range='{
-		  "from": "2016-02-22T22:13:36+00:00",
+		  "from": "2016-02-22T12:00:00+00:00",
 		  "to": "2016-03-02T22:13:36+00:00"
 			}'>
       </px-rangepicker>	
@@ -52,7 +57,22 @@
 
 <px-card>
       <br>
-      <px-chart id="the-chart">
+      <px-chart id="the-chart" 
+		legend='{
+     "enabled": true,
+     "useHTML": true,
+     "layout": "vertical",
+     "verticalAlign": "top",
+     "y": -20,
+     "align": "left",
+     "floating": true,
+     "itemMarginTop": 2,
+     "itemMarginBottom": 2
+     }'
+     global='{
+     timezoneOffset: -28800
+     }'     
+      >
      <!--<px-rangepicker id="my-range-picker" style="z-index: 100; float: left;">
     </px-rangepicker>-->
          <px-chart-series-line id="Solar Output" data={{solarData}}>

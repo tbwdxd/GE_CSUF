@@ -50,6 +50,27 @@
 					width="auto">
 </px-simple-bar-chart>
 </section>
+
+<px-card>
+	<br><h1 align="center">Trigen Downtime</h1>
+	<table style="width: 100%; text-align: left">
+<thead>
+<th>StartTime</th>
+<th>EndTime</th>
+<th>Total Increase in SCE</th>
+<th>Total Cost</th>
+</thead>	
+
+	<tr ng-repeat="down in downTime">
+	<td>{{down.startDate  * 1000 | date : 'short' : 'UTC'}}</td>	
+	<td>{{down.endDate * 1000 | date : 'short' : 'UTC'}}</td>
+	<td>{{down.sceTotal | number : 2}}	kWh</td>
+	<td>{{down.sceTotal * price | currency}}</td>
+	</tr>
+	</table>
+	<p>Total increase in SCE is calculated by using the total average SCE comsumption.</p>
+	<p>This is an estimate!</p>
+	</px-card>
 </body>
 
 </px-card>
