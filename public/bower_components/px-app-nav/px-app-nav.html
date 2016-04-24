@@ -36,13 +36,11 @@ Nav bar / drawer for applications
       <!-- <button class="btn btn--bare btn--svg" on-click="toggleNav"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="291 489.4 20 16"><path fill="#ffffff" d="M291 489.4v4h20v-4h-20zm0 10h20v-4h-20v4zm0 6h20v-4h-20v4z"/></svg></button> -->
       <ul id="navitemlist" class="navbar__item list-bare">
         <template is="dom-repeat" items="{{navItems}}" as="navitem">
-          <li>
-            <a class$="{{navitem.class}}" href$="{{navitem.href}}" event-name$="{{navitem.eventName}}" on-click="navClickHandler"><i class$="{{navitem.icon}}"></i><span>{{navitem.label}}</span></a>
-            <ul class$="{{navitem.subitemlistclass}}">
+          <li class="dropdown">
+            <a class$="{{navitem.class}} dropdown-toggle" href$="{{navitem.href}}" event-name$="{{navitem.eventName}}" on-click="navClickHandler" data-toggle="dropdown"><i class$="{{navitem.icon}}"></i><span>{{navitem.label}}</span></a>
+            <ul class$="{{navitem.subitemlistclass}} dropdown-menu">
               <template is="dom-repeat" items="{{navitem.subitems}}">
-                <li>
-                  <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler"><span class$="{{navitem.subitemclass}}" style="padding-left: 1em; line-height: 3;">{{item.label}}</span></a>
-                </li>
+                  <a href$="{{item.href}}" class$="{{item.class}}" style="background-color: #081F30" event-name$="{{item.eventName}}" on-click="subnavClickHandler"><span class$="{{navitem.subitemclass}}" style="padding-left: 1em;">{{item.label}}</span></a>
               </template>
             </ul>
           </li>

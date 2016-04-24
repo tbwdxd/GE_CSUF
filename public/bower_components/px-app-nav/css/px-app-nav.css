@@ -791,6 +791,11 @@ button.btn {
   margin-right: 2rem !important;
   margin-left: 0 !important; }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
 :host {
   /*background-color: var(--px-app-nav-background-color);*/ }
 
