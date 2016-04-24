@@ -15,6 +15,7 @@
 
     });
 </script>
+<<<<<<< HEAD
 
 <style type="text/css">
 h1 {
@@ -36,6 +37,11 @@ h1 {
    <px-card class="background">
       <br>
       <h1>Select a time range: </h1>
+=======
+      <px-card class="background">
+      <br><br>
+      <h1 class="ecomagination" align="center">View the Power Consumption in Real Time!</h1>
+>>>>>>> 058a7f57bde4ec05317f245e0012027c4d81445b
       <style type="text/css">
          .background {
          background-color: rgb(225, 226, 229);
@@ -46,71 +52,9 @@ h1 {
          font-style: bold;
          color: rgb(13, 100, 171);
          }
-         div.img_holder img {
-         float: center;
-         position: relative;
-         margin-top: -10%;
-         margin-left: 10px;
-         }
-         div.imgs img{
-         float: center;
-         position: relative;
-         }
-         .Group_1 {
-         position: relative;
-         margin: 10px;
-         display: inline-block;
-         z-index: 50;
-         }
-         .Caption {
-         font-size: 18px;
-         font-family: "GE Inspira";
-         color: rgb(55, 44, 58);
-         font-style: italic;
-         line-height: 1.2;
-         text-align: center;
-         position: relative;
-         z-index: 49;
-         }
-         .Numerical_Value {
-         font-size: 30px;
-         font-family: "GE Inspira";
-         color: rgb(0, 89, 188);
-         line-height: 2.033;
-         text-align: left;
-         position: relative;
-         float:right;
-         margin-right: 15px;
-         z-index: 48;
-         }
-         .Green_Label {
-         font-size: 16px;
-         color: rgb(103, 171, 8);
-         font-weight: bold;
-         line-height: 3.625;
-         text-align: left;
-         position: relative;
-         float: right;
-         margin-right: -23%;
-         margin-top: 10px;
-         z-index: 47;
-         }
-         .Rounded_Rectangle {
-         border-width: 1px;
-         border-color: rgb(229, 229, 229);
-         border-style: solid;
-         border-radius: 6px;
-         background-image: -moz-linear-gradient( 90deg, rgb(243,255,227) 0%, rgb(255,255,255) 100%);
-         background-image: -webkit-linear-gradient( 90deg, rgb(243,255,227) 0%, rgb(255,255,255) 100%);
-         background-image: -ms-linear-gradient( 90deg, rgb(243,255,227) 0%, rgb(255,255,255) 100%);
-         box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.09);
-         position: relative;
-         width: 374px;
-         height: 219px;
-         z-index: 43;
-         float: left;
-         }
+
       </style>
+<<<<<<< HEAD
 
       <px-rangepicker id="my-range-picker"
 					  range='{
@@ -131,14 +75,61 @@ h1 {
 		
    </px-card>
       <px-card>
+=======
+      
+    <br>
+</px-card>
+
+<px-card>
+>>>>>>> 058a7f57bde4ec05317f245e0012027c4d81445b
       <br>
-      <px-chart id="the-chart">
-         <px-chart-series-line id="Solar Output" data={{solarData}}>
+      <px-chart id="the-chart" tooltip-offset="8">
+     <px-rangepicker id="my-range-picker" style="z-index: 100; float: left;">
+    </px-rangepicker>
+         <px-chart-series-line id="Solar Output" data={{solarData}} units="kWh">
          </px-chart-series-line>
          <px-chart-series-line id="Trigen Output" data={{trigenData}}>
          </px-chart-series-line>
          <px-chart-series-line id="SCE Output" data={{sceData}}>
          </px-chart-series-line>
       </px-chart>
+      <br>
+   </px-card>
+   
+
+<px-card class="background">
+
+<style type="text/css">
+	table {
+		width: 100%;
+		text-align: left;
+	}
+</style>
+
+
+<h1 align="center">Summary over time range</h1>
+
+<table class="table table-striped">
+<thead>
+<tr>
+<th></th>
+<th>Solar</th>
+<th>Trigen</th>
+<th>SCE</th>
+<th>Totals</th>
+</tr>
+</thead>
+<tr>
+<td>Total Consumption</td><td>{{solarTotal | number : 2}}</td><td>{{trigenTotal | number : 2}}</td><td>{{sceTotal | number : 2}}</td><td>{{allTotal | number : 2}}</td>
+</tr>
+<tr>
+<td>Average Consumption</td><td>{{solarAverage | number : 2}}</td><td>{{trigenAverage | number : 2}}</td><td>{{sceAverage | number : 2}}</td><td>{{allAverage | number : 2}}</td>
+</tr>
+<tr>
+<td>Total Cost</td><td>{{solarCost | currency}}</td><td>{{trigenCost | currency}}</td><td>{{sceCost | currency}}</td><td>{{allCost | currency}}</td>
+</tr>
+</table>
+	
+		
    </px-card>
 </div>
