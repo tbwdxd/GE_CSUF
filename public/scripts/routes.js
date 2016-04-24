@@ -58,6 +58,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
             document.querySelector('px-app-nav').markSelected('/home');
             $state.go('home');
         });
+		
 
     }]);
 });

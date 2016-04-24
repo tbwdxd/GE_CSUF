@@ -16,7 +16,18 @@
     });
 </script>
 
+<style type="text/css">
+h1 {
+	font-weight: normal;
+}
+.padding {
+	padding-top: 30px;
+}
+</style>
+	
+	
    <px-card>
+	   <div class="padding"></div>
       <h1 align="center" size=20>
          <br><br>
          CSUF's Solar Panel Application!
@@ -24,8 +35,7 @@
    </px-card>
    <px-card class="background">
       <br>
-      <span class="ecomagination">Pick a time Range!!</span>
-      <br><br>
+      <h1>Select a time range: </h1>
       <style type="text/css">
          .background {
          background-color: rgb(225, 226, 229);
@@ -101,7 +111,7 @@
          float: left;
          }
       </style>
-      <center>
+
       <px-rangepicker id="my-range-picker"
 					  range='{
       "from": "2016-02-22T22:13:36+00:00",
