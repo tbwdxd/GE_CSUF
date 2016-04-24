@@ -1,4 +1,3 @@
-
 <div id="Dashboard" ng-controller="DashboardsCtrl">
 
 <script type="text/javascript">
@@ -15,77 +14,47 @@
 
     });
 </script>
-<<<<<<< HEAD
 
 <style type="text/css">
-h1 {
-	font-weight: normal;
-}
-.padding {
-	padding-top: 30px;
-}
-</style>
-	
+	h1 {
+		font-weight: normal;
+	}
+	.padding {
+		padding-top: 90px;
+	}
+	 .background {
+	 background-color: rgb(225, 226, 229);
+	 }
+	 .ecomagination{
+	 font-size: 30px;
+	 font-family: "GE Inspira";
+	 font-style: bold;
+	 color: rgb(13, 100, 171);
+	 }
+</style>	
 	
    <px-card>
 	   <div class="padding"></div>
-      <h1 align="center" size=20>
-         <br><br>
-         CSUF's Solar Panel Application!
-      </h1>
+      <h1 style="text-align: center;">Power Consumption in Real Time</h1>
    </px-card>
+	
    <px-card class="background">
       <br>
       <h1>Select a time range: </h1>
-=======
-      <px-card class="background">
-      <br><br>
-      <h1 class="ecomagination" align="center">View the Power Consumption in Real Time!</h1>
->>>>>>> 058a7f57bde4ec05317f245e0012027c4d81445b
-      <style type="text/css">
-         .background {
-         background-color: rgb(225, 226, 229);
-         }
-         .ecomagination{
-         font-size: 30px;
-         font-family: "GE Inspira";
-         font-style: bold;
-         color: rgb(13, 100, 171);
-         }
-
-      </style>
-<<<<<<< HEAD
-
-      <px-rangepicker id="my-range-picker"
+	  <px-rangepicker id="my-range-picker"
 					  range='{
-      "from": "2016-02-22T22:13:36+00:00",
-      "to": "2016-03-02T22:13:36+00:00"
-    	}'>
-    </px-rangepicker>
-      <div><h3>Solar</h3>
-      Average: {{solarAverage | number : 2}}kWh	Total Consumption: {{solarTotal | number : 2}}kWh Total Cost: ${{solarCost | number : 2}}
-      </div>
-      <div><h3>Trigen</h3>
-      Average: {{trigenAverage | number : 2}}kWh	Total Consumption: {{trigenTotal | number : 2}}kWh Total Cost: ${{trigenCost | number : 2}}
-      </div>
-      <div><h3>SCE</h3>
-      Average: {{sceAverage | number : 2}}kWh	Total Consumption: {{sceTotal | number : 2}}kWh Total Cost: ${{sceCost | number : 2}}
-      </div>
-	
+		  "from": "2016-02-22T22:13:36+00:00",
+		  "to": "2016-03-02T22:13:36+00:00"
+			}'>
+      </px-rangepicker>	
 		
    </px-card>
-      <px-card>
-=======
-      
-    <br>
-</px-card>
 
 <px-card>
->>>>>>> 058a7f57bde4ec05317f245e0012027c4d81445b
       <br>
       <px-chart id="the-chart" tooltip-offset="8">
-     <px-rangepicker id="my-range-picker" style="z-index: 100; float: left;">
-    </px-rangepicker>
+     <!--<px-rangepicker id="my-range-picker" style="z-index: 100; float: left;">
+    </px-rangepicker>-->
          <px-chart-series-line id="Solar Output" data={{solarData}} units="kWh">
          </px-chart-series-line>
          <px-chart-series-line id="Trigen Output" data={{trigenData}}>
