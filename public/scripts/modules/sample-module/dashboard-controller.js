@@ -14,16 +14,19 @@ define(['angular', './sample-module'], function (angular, controllers) {
    		$scope.solarTotal = null;
    		$scope.sceTotal = null;
    		$scope.trigenTotal = null;
+   		$scope.allTotal = null;
    		
    		// Average Values
    		$scope.solarAverage = null;
    		$scope.sceAverage = null;
    		$scope.trigenAverage = null;
+   		$scope.allAverage = null;
    		
    		// Cost Values
    		$scope.solarCost = null;
    		$scope.sceCost = null;
    		$scope.trigenCost = null;
+   		$scope.allCost = null;
    		
    		// Price per kilowatt hour
    		$scope.price = 0.12
@@ -54,7 +57,6 @@ define(['angular', './sample-module'], function (angular, controllers) {
         	  			var currTime = parseInt(value.Timestamp) * 1000
         	  			if (currTime >= fromTime && currTime <= toTime) {
         	  					try {
-        	  						
         	  						// This is for the chart
         	  						sce.push(currTime, parseFloat(value.SCE));
         	  						solar.push(currTime, parseFloat(value.Solar));
@@ -84,14 +86,17 @@ define(['angular', './sample-module'], function (angular, controllers) {
    			$scope.solarTotal = totalsolar;
    			$scope.sceTotal = totalsce;
    			$scope.trigenTotal = totaltrigen;
+   			$scope.allTotal = totalsolar + totalsce + totaltrigen;
    			
    			$scope.solarCost = totalsolar * $scope.price;
    			$scope.sceCost = totalsce * $scope.price;
    			$scope.trigenCost = totaltrigen * $scope.price;
+   			$scope.allCost = $scope.solarCost + $scope.sceCost + $scope.trigenCost;
    			
    			$scope.solarAverage = totalsolar / counter;
    			$scope.sceAverage = totalsce / counter;
    			$scope.trigenAverage = totaltrigen / counter;
+   			$scope.allAverage = (totalsolar + totalsce + totaltrigen) / counter;
         	
         	};
         	 console.log($scope.solarData);
