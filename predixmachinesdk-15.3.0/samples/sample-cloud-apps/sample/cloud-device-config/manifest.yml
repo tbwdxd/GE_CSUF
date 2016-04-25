@@ -1,0 +1,21 @@
+# this is a minimal manifest
+# update the properties and fill in the missing properties before deployment
+applications:
+- name: sample-cloud-device-config
+  memory: 512M
+  instance: 1
+  host: sample-cloud-device-config
+  path: ./target/cf-device-config-service-15.3.0.jar
+
+env:
+  SPRING_PROFILES_ACTIVE: cloud
+  git_repo_local_folder: GitRepositories
+  git_repo_uri: 
+  git_repo_root: 
+  git_repo_username: 
+  git_repo_password: 
+  checkTokenEndpointUrl: 
+  accessTokenEndpointUrl: 
+  adminUserName: 
+  clientId: 
+  clientSecret: 

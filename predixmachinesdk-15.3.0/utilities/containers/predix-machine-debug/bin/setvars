@@ -1,0 +1,104 @@
+#!/bin/sh
+
+# Copyright (c) 2012-2014 General Electric Company. All rights reserved."
+# The copyright to the computer software herein is the property of"
+# General Electric Company. The software may be used and/or copied only"
+# with the written permission of General Electric Company or in accordance"
+# with the terms and conditions stipulated in the agreement/contract"
+# under which the software has been supplied"
+
+
+
+# Add NDDS, OpenSSL, and Routing Service libraries to library path
+if [ `uname -m` = "armv6l" ]; then
+
+   if [ -z "$NDDS_LIBRARY_PATH" ]; then 
+       NDDS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/ndds/armv6vfphLinux3.xgcc4.7.2jdk";
+   fi
+   
+   if [ -z "$OPENSSL_LIBRARY_PATH" ]; then 
+       OPENSSL_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/openssl/armv6vfphLinux3.xgcc4.7.2/lib";
+   fi
+   
+   if [ -z "$ROUTING_SERVICE_LIBRARY_PATH" ]; then 
+       ROUTING_SERVICE_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/routingservice/armv6vfphLinux3.xgcc4.7.2";
+   fi   
+         
+   if [ -z "$TCP_LIBRARY_PATH" ]; then 
+       TCP_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/tcp/armv6vfphLinux3.xgcc4.7.2";
+   fi 
+   
+   if [ -z "$TLS_LIBRARY_PATH" ]; then 
+       TLS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/tls/armv6vfphLinux3.xgcc4.7.2";
+   fi   
+
+   if [ -z "$DTLS_LIBRARY_PATH" ]; then 
+       DTLS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/dtls/armv6vfphLinux3.xgcc4.7.2";
+   fi
+   
+   LD_LIBRARY_PATH=${NDDS_LIBRARY_PATH}:${OPENSSL_LIBRARY_PATH}:${ROUTING_SERVICE_LIBRARY_PATH}:${TCP_LIBRARY_PATH}:${TLS_LIBRARY_PATH}:${DTLS_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+   export LD_LIBRARY_PATH
+   echo "Dynamic library path: $LD_LIBRARY_PATH"
+   
+elif [ `uname` = "Darwin" ]; then
+
+   if [ -z "$NDDS_LIBRARY_PATH" ]; then 
+       NDDS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/ndds/x64Darwin12clang4.1jdk";
+   fi
+   
+   if [ -z "$OPENSSL_LIBRARY_PATH" ]; then 
+       OPENSSL_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/openssl/x64Darwin12clang4.1/lib";
+   fi
+   
+   if [ -z "$ROUTING_SERVICE_LIBRARY_PATH" ]; then 
+       ROUTING_SERVICE_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/routingservice/x64Darwin12clang4.1";
+   fi
+   
+   if [ -z "$TCP_LIBRARY_PATH" ]; then 
+       TCP_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/tcp/x64Darwin12clang4.1";
+   fi    
+    
+   if [ -z "$TLS_LIBRARY_PATH" ]; then 
+       TLS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/tls/x64Darwin12clang4.1";
+   fi    
+    
+   if [ -z "$DTLS_LIBRARY_PATH" ]; then 
+       DTLS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/dtls/x64Darwin12clang4.1";
+   fi   
+    
+   DYLD_LIBRARY_PATH=${NDDS_LIBRARY_PATH}:${OPENSSL_LIBRARY_PATH}:${ROUTING_SERVICE_LIBRARY_PATH}:${TCP_LIBRARY_PATH}:${TLS_LIBRARY_PATH}:${DTLS_LIBRARY_PATH}:${DYLD_LIBRARY_PATH}
+   export DYLD_LIBRARY_PATH
+   echo "Dynamic library path: $DYLD_LIBRARY_PATH"
+   
+else
+
+   if [ -z "$NDDS_LIBRARY_PATH" ]; then 
+       NDDS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/ndds/x64Linux2.6gcc4.4.5jdk";
+   fi
+   
+   if [ -z "$OPENSSL_LIBRARY_PATH" ]; then 
+       OPENSSL_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/openssl/x64Linux2.6gcc4.4.5/lib";
+   fi
+   
+   if [ -z "$ROUTING_SERVICE_LIBRARY_PATH" ]; then 
+       ROUTING_SERVICE_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/routingservice/x64Linux2.6gcc4.4.5";
+   fi
+       
+   if [ -z "$TCP_LIBRARY_PATH" ]; then 
+       TCP_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/tcp/x64Linux2.6gcc4.4.5";
+   fi   
+   
+   if [ -z "$TLS_LIBRARY_PATH" ]; then 
+       TLS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/tls/x64Linux2.6gcc4.4.5";
+   fi      
+   
+   if [ -z "$DTLS_LIBRARY_PATH" ]; then 
+       DTLS_LIBRARY_PATH="$PREDIX_MACHINE_HOME/lib/dtls/x64Linux2.6gcc4.4.5";
+   fi 
+   
+   LD_LIBRARY_PATH=${NDDS_LIBRARY_PATH}:${OPENSSL_LIBRARY_PATH}:${ROUTING_SERVICE_LIBRARY_PATH}:${TCP_LIBRARY_PATH}:${TLS_LIBRARY_PATH}:${DTLS_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+   export LD_LIBRARY_PATH
+   echo "Dynamic library path: $LD_LIBRARY_PATH"
+   
+fi
+

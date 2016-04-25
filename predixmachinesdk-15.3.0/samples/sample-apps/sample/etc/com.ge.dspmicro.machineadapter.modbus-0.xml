@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<modbusMachineAdapterConfig>
+    <name>Onsite monitor modbus nodes</name>
+    <description>Onsite monitor modbus nodes</description>
+ 
+    <dataNodeConfigs>
+        <channel protocol="TCP_IP" tcpIpAddress="3.39.48.116" tcpIpPort="502">
+            <unit id="1">
+                <register name="Node-1-1" dataType="INTEGER" address="10" registerType="HOLDING" description="temperature"/>
+                <register name="Node-1-2" dataType="DECIMAL" address="11" registerType="HOLDING" description="pressure"/>
+            </unit>
+        </channel>
+    </dataNodeConfigs>
+ 
+ 	<!-- Both updateInterval and startPointOffset are in seconds. If startPointOffset == -1, it will start immediately -->
+    <dataSubscriptionConfigs>
+        <dataSubscriptionConfig name="TempSub" updateInterval="120" startPointUnit="MINUTES" startPointOffset="10">
+            <nodeName>Node-1-1</nodeName>
+        </dataSubscriptionConfig>
+    </dataSubscriptionConfigs>
+ 
+ </modbusMachineAdapterConfig>

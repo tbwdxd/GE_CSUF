@@ -1,0 +1,24 @@
+/* 
+ * The following IDL MUST appear inside the based root structure of the 
+ * metadata IDL and the data IDL for any UMF publish/subscribe that uses "metadata".
+ * This allows the UMF Publish/Subscribe to track metadata version changes. 
+ *
+ * Note: the structure must also be "key".
+ *      UmfMetaInformation   umf;   //@key
+ * 
+ * For metadata IDL, there should be no other keys in the structure!
+ * 
+ * @field streamId - The stream that a writer is producing that readers would filter on.
+ * @field metadataVersion - The version of the streamId data. This will change whenever 
+ *                          a writer pushes a new metadata format. (Not structure of the 
+ *                          metadata IDL, but different values that affect the data sent.
+ * @field endpointId - The publish end point id responsible. The writer will be using this end point
+ *                          which fully describes the QoS, Topic and domain and where this structure came from.
+ */
+const long GUID_LEN = 36;
+
+struct UmfMetaInformation {
+    string<GUID_LEN>    streamId;  //@key
+    long                metadataVersion;
+    string<GUID_LEN>    endpointId;
+};
