@@ -1,4 +1,6 @@
 <div ng-controller="TableCtrl">
+
+
 <px-card>
 <body>
 <h1 align="center" size="20"><br><br><br>Monthly Ouputs</h1>
@@ -12,7 +14,7 @@
 
 <section>
 <h2><center>2014 Outputs</center></h2>
-<h2><span style="color:#ffa64d;">Orange</span>=Solar <span style="color:#3377ff;">Blue</span>=Southern California Edison <span style="color:#00b33c;">Green</span>=Trigen</h2>
+<h2><span style="color:#ffa64d;">Orange</span>=Souther California Edison <span style="color:#3377ff;">Blue</span>=Solar <span style="color:#00b33c;">Green</span>=Trigen</h2>
 <px-simple-bar-chart 
 	chart-data="[
 						[0,0,328.54,21437.18,27155.91,13345.64,27308.4,25132.23,50441.02,32248.2,21231.59,61637.0],
@@ -51,6 +53,7 @@
 </px-simple-bar-chart>
 </section>
 
+{{solarData}}
 <px-card>
 	<br><h1 align="center">Trigen Downtime</h1>
 	<table style="width: 100%; text-align: left">
