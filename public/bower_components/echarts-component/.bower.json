@@ -1,0 +1,32 @@
+{
+  "name": "echarts-component",
+  "description": "A polymer component wrapper of echarts",
+  "keywards": [
+    "web-components"
+  ],
+  "authors": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "polymer/polymer",
+    "echarts": "3.0.2"
+  },
+  "homepage": "https://github.com/gutenye/echarts-component",
+  "version": "0.0.2",
+  "_release": "0.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.2",
+    "commit": "5be1c9939bb4800dd70a4eaa9aa516fccb0095ff"
+  },
+  "_source": "https://github.com/gutenye/echarts-component.git",
+  "_target": "^0.0.2",
+  "_originalSource": "echarts-component",
+  "_direct": true
+}
