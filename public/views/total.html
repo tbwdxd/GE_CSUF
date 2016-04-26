@@ -11,21 +11,25 @@
 	<px-data-table-column name="trigen"><px-data-table-column>
 	<px-data-table-column name="solar"><px-data-table-column>
 </px-data-table>
-
-<section>
-<h2><center>2014 Outputs</center></h2>
-
-
-<div id="echart1" style="width: 900px;height:700px;"></div>
-<h2><center>2015 Outputs</center></h2>
-<div id="echart2" style="width: 900px;height:700px;"></div>
-    <script type="text/javascript">
-        // inital echart based on dom
-        var myChart = echarts.init(document.getElementById('echart1'));
-
-        // chart option
-        var option = {
-    tooltip : {
+<dom-module id="my-app1">
+<template>
+  <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
+</template>
+</dom-module>
+<dom-module id="my-app2">
+<template>
+  <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
+</template>
+</dom-module>
+<script>
+  var $ = function(selector) { return typeof selector === "string" ? document.querySelector(selector) : selector || null }
+  var $$ = function(selector) { return [].slice.call(document.querySelectorAll(selector)) }
+  Polymer({
+    is: "my-app1",
+    ready() {
+      this.options = {
+        title: {text: "2014 Outputs"},
+        tooltip : {
         trigger: 'axis',
         axisPointer : {            // axis
             type : 'shadow'        // options：'line' | 'shadow'
@@ -84,18 +88,20 @@
             },
             data: [0, 0, 5327.4, 95442.71, 87850.37, 90902.71, 94846.73, 94419.25, 86307.96, 94690.22, 85629.58, 40113.08]
         }
-        ]};
-
-        // render chart
-        myChart.setOption(option);
-    </script>
-<script type="text/javascript">
-        // inital echart based on dom
-        var myChart = echarts.init(document.getElementById('echart2'));
-
-        // chart option
-        var option = {
-    tooltip : {
+        ]
+      }
+    }
+  })
+</script>
+  <script>
+  var $ = function(selector) { return typeof selector === "string" ? document.querySelector(selector) : selector || null }
+  var $$ = function(selector) { return [].slice.call(document.querySelectorAll(selector)) }
+  Polymer({
+    is: "my-app2",
+    ready() {
+      this.options = {
+        title: {text: "2015 Outputs"},
+        tooltip : {
         trigger: 'axis',
         axisPointer : {            // axis
             type : 'shadow'        // options：'line' | 'shadow'
@@ -154,12 +160,16 @@
             },
             data: [80232.09, 87488.99, 96233.48, 90766.91, 85113.2, 90787.51, 88218.33, 90832.3, 94688.19, 94752.49, 82177.07, 86104.67]
         }
-        ]};
+        ]
+      }
+    }
+  })
+</script>
 
-        // render chart
-        myChart.setOption(option);
-    </script>
+<section>
+<my-app1></my-app1>
 
+<my-app2></my-app2>
 
 
 
