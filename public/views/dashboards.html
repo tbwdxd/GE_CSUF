@@ -6,7 +6,8 @@
 	Highcharts.setOptions({
 	
 		global: {
-			useUTC: true
+			useUTC: true,
+			timezoneOffset: 8 * 60
 		}
 	});
     var el = document.querySelector("#my-range-picker");
@@ -59,13 +60,8 @@
       <h1>Select a time range: </h1>
 	  <px-rangepicker id="my-range-picker"
 					  range='{
-<<<<<<< HEAD
-		  "from": "2015-02-22T12:00:00+00:00",
-		  "to": "2015-03-02T22:13:36+00:00"
-=======
-		  "from": "2016-02-22T12:00:00+00:00",
-		  "to": "2016-03-02T12:00:00+00:00"
->>>>>>> origin/luis_branch
+		  "from": "2016-02-22T00:00:00-08:00",
+		  "to": "2016-03-02T00:00:00-08:00"
 			}'>
       </px-rangepicker>	
 		
