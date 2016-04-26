@@ -28,8 +28,9 @@ define(['angular', './sample-module'], function (angular, controllers) {
    		$scope.trigenCost = null;
    		$scope.allCost = null;
    		
-   		// Price per kilowatt hour
-   		$scope.price = 0.12
+   		// Price per kilowatt hour the trigen plant runs on nautral gas
+   		$scope.priceSCE = 0.135
+   		$scope.priceNaturalGas = 0.08
    		
         $http({
             method: 'GET',
@@ -88,9 +89,9 @@ define(['angular', './sample-module'], function (angular, controllers) {
    			$scope.trigenTotal = totaltrigen;
    			$scope.allTotal = totalsolar + totalsce + totaltrigen;
    			
-   			$scope.solarCost = totalsolar * $scope.price;
-   			$scope.sceCost = totalsce * $scope.price;
-   			$scope.trigenCost = totaltrigen * $scope.price;
+   			$scope.solarCost = totalsolar * 0;
+   			$scope.sceCost = totalsce * $scope.priceSCE;
+   			$scope.trigenCost = totaltrigen * $scope.priceNaturalGas;
    			$scope.allCost = $scope.solarCost + $scope.sceCost + $scope.trigenCost;
    			
    			$scope.solarAverage = totalsolar / counter;

@@ -4,7 +4,7 @@ define(['angular', './sample-module'], function (ngular, controllers) {
     // Controller definition
     controllers.controller('TableCtrl', ['$scope', '$http', function($scope, $http) {
     		
-    		$scope.price = 0.12;
+    		$scope.price = 0.135;
     		$scope.solarData = null;
     		
     		// Get the monthly data

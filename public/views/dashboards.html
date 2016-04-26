@@ -1,4 +1,14 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script type="text/javascript">
+
+	Highcharts.setOptions({
+	
+		global: {
+			useUTC: true
+		}
+	});
     var el = document.querySelector("#my-range-picker");
 
     el.addEventListener("range-changed", function(e) {
@@ -49,8 +59,13 @@
       <h1>Select a time range: </h1>
 	  <px-rangepicker id="my-range-picker"
 					  range='{
+<<<<<<< HEAD
 		  "from": "2015-02-22T12:00:00+00:00",
 		  "to": "2015-03-02T22:13:36+00:00"
+=======
+		  "from": "2016-02-22T12:00:00+00:00",
+		  "to": "2016-03-02T12:00:00+00:00"
+>>>>>>> origin/luis_branch
 			}'>
       </px-rangepicker>	
 		
@@ -69,21 +84,17 @@
      "floating": true,
      "itemMarginTop": 2,
      "itemMarginBottom": 2
-     }'
-     global='{
-     timezoneOffset: -28800
-     }'     
+     }'    
       >
      <!--<px-rangepicker id="my-range-picker" style="z-index: 100; float: left;">
     </px-rangepicker>-->
-         <px-chart-series-line id="Solar Output" data={{solarData}}>
+         <px-chart-series-line units="kWh" id="Solar Output" data={{solarData}}>
          </px-chart-series-line>
          <px-chart-series-line id="Trigen Output" data={{trigenData}}>
          </px-chart-series-line>
-         <px-chart-series-line id="SCE Output" data={{sceData}}>
+         <px-chart-series-line id="SCE Import" data={{sceData}}>
          </px-chart-series-line>
       </px-chart>
-      <br>
    </px-card>
    
 
@@ -110,15 +121,16 @@
 </tr>
 </thead>
 <tr>
-<td>Total Consumption</td><td>{{solarTotal | number : 2}}</td><td>{{trigenTotal | number : 2}}</td><td>{{sceTotal | number : 2}}</td><td>{{allTotal | number : 2}}</td>
+<td>Total Output (kWh)</td><td>{{solarTotal | number : 2}}</td><td>{{trigenTotal | number : 2}}</td><td>{{sceTotal | number : 2}}</td><td>{{allTotal | number : 2}}</td>
 </tr>
 <tr>
-<td>Average Consumption</td><td>{{solarAverage | number : 2}}</td><td>{{trigenAverage | number : 2}}</td><td>{{sceAverage | number : 2}}</td><td>{{allAverage | number : 2}}</td>
+<td>Average Output (kWh)</td><td>{{solarAverage | number : 2}}</td><td>{{trigenAverage | number : 2}}</td><td>{{sceAverage | number : 2}}</td><td>{{allAverage | number : 2}}</td>
 </tr>
 <tr>
 <td>Total Cost</td><td>{{solarCost | currency}}</td><td>{{trigenCost | currency}}</td><td>{{sceCost | currency}}</td><td>{{allCost | currency}}</td>
 </tr>
 </table>
+<p style="font-size: 10px">Based on Trigen plant $ 0.08 per kWh and SCE blended rate of $ 0.135 per kWh.</p>
 	
 		
    </px-card>
