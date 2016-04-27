@@ -47,13 +47,6 @@ define(['angular', './sample-module'], function (angular, controllers) {
         				var tempBlock = [];
         				if (value.name == "Monday") {
         					console.log("Monday");
-        					for (i = 0 < value.bestStarts.length())	
-        					{
-        						if (value.bestEnd[i] == [])
-        						{
-        							tempBlock.append(value.bestStarts[i] + '- End of day');
-        						}
-        					}
         				}
         				else if (value.name = "Tuesday") {
         					console.log("Tuesday");

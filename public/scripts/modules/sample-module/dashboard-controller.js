@@ -28,6 +28,12 @@ define(['angular', './sample-module'], function (angular, controllers) {
    		$scope.trigenCost = null;
    		$scope.allCost = null;
    		
+   		// Percentage 
+   		$scope.solarPercent = null;
+   		$scope.scePercent = null;
+   		$scope.trigenPercent = null;
+ 
+   		
    		// Price per kilowatt hour the trigen plant runs on nautral gas
    		$scope.priceSCE = 0.135
    		$scope.priceNaturalGas = 0.08
@@ -98,6 +104,11 @@ define(['angular', './sample-module'], function (angular, controllers) {
    			$scope.sceAverage = totalsce / counter;
    			$scope.trigenAverage = totaltrigen / counter;
    			$scope.allAverage = (totalsolar + totalsce + totaltrigen) / counter;
+   			var totals = (totalsolar + totalsce + totaltrigen);
+   			
+   			$scope.solarPercent = totals / totalsolar;
+   			$scope.scePercent = totals / totalsce;
+   			$scope.trigenPercent = totals / totaltrigen;
         	
         	};
         	 console.log($scope.solarData);
