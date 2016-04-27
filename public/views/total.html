@@ -1,8 +1,82 @@
+<style type="text/css">
+.anchor {
+	
+}
+#navbar {
+	position: relative;
+}
+#new-menu {
+	height: 4rem;
+	text-align: center;
+	width: 100%;
+	margin: 0 -1.3333333333rem -2rem;
+}
+.fixed-header {
+	top: 0;
+	background-color: #293c55;
+	position: fixed;
+}
+.pnew-menu {
+	line-height: 4;
+	text-decoration: none;
+	padding: 1.444em;
+}
+.new-menu-right {
+	float: right;
+}
+span.pnew-menu:hover {
+	background-color: #081F30;
+}
+
+a.pnew-link:link {
+    text-decoration: none;
+}
+
+a.pnew-link:visited {
+    text-decoration: none;
+}
+
+a.pnew-link:hover {
+    text-decoration: none;
+}
+
+a.pnew-link:active {
+    text-decoration: none;
+}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+	var $window = $(window);
+	var nav = $('#new-nav');
+	$window.scroll(function(){
+    if ($window.scrollTop() >= 300) {
+       nav.addClass('fixed-header');
+    }
+    else {
+       nav.removeClass('fixed-header');
+    }
+});
+</script>
+
 <div ng-controller="TableCtrl">
-
-
 <px-card>
 <body>
+	<nav id="new-nav">
+		<div class="fixed-header" id="new-menu">
+			<div class="new-menu-right">
+				<a href="#2014" class="pnew-link">
+					<span class="pnew-menu" style="color: white;">2014</span>
+				</a>
+				<a href="#2015" class="pnew-link">
+					<span class="pnew-menu" style="color: white;">2015</span>
+				</a>
+				<a href="#trigen" class="pnew-link">
+					<span class="pnew-menu" style="color: white;">Trigen Downtime</span>
+				</a>
+			</div>
+		</div>
+	</nav>
 <h1 align="center" size="20"><br><br><br>Monthly Ouputs</h1>
 <px-data-table striped filterable enable-column-resize table-data="{{avgData}}">
 	<px-data-table-column name="month" filterable><px-data-table-column>
@@ -11,12 +85,16 @@
 	<px-data-table-column name="trigen"><px-data-table-column>
 	<px-data-table-column name="solar"><px-data-table-column>
 </px-data-table>
+		
 <dom-module id="my-app1">
+	<a name="2014"></a>
 <template>
   <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
 </template>
 </dom-module>
+		
 <dom-module id="my-app2">
+	<a name="2015"></a>
 <template>
   <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
 </template>
@@ -180,6 +258,7 @@
 </px-chart>-->
 
 <px-card>
+	<a name="trigen"></a>
 	<br><h1 align="center">Trigen Downtime</h1>
 	<table style="width: 100%; text-align: left">
 <thead>
