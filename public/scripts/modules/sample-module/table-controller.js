@@ -45,6 +45,73 @@ define(['angular', './sample-module'], function (ngular, controllers) {
     			);
 		console.log($scope.solarData);
     	});
+ 
+ /*   	
+    	var week=100;
+		var week2=99;
+		$scope.solarData = null;
+		$scope.tempData = [];
+		//var query = '{"start":"'+week+'w-ago","tags":[{"name":"SolarData"}]}';
+		//var query = '{"cache_time":0,"tags":[{"name":"Trigen-Data","order":"desc"}],"start":'+week+'w-ago,"end":'+week2+'w-ago}';
+		var fetchinterval;
+		$scope.fetch=function(){
+			--week;
+			console.log("week_one", week);
+			--week2;
+			console.log("week_one", week2);
+			var query = '{"cache_time":0,"tags":[{"name":"Trigen-Data","order":"desc"}],"start":'+week+'w-ago,"end":'+week2+'w-ago}';
+			$scope.solarData = [];
+       			$http({
+           		url: '/api/v1/datapoints',
+          		 method: 'POST',    
+           		data: query
+         		}).then(function(predixTimeSeriesData){
+				 $scope.tempData = $scope.tempData.concat(predixTimeSeriesData.data.tags[0].results[0].values.map(
+       			 	function(curVal, index, arr) {
+            				return [curVal[0], curVal[1]];
+        			}
+    				));
+			});
+			console.log(query);
+			$scope.solarData = $scope.tempData;
+			console.log($scope.solarData);
+		};
+		console.log($scope.solarData);
+		$scope.start = function() {
+        		fetchInterval = $interval($scope.fetch, 3000);
+    		};
+
+		// Clear the interval when the scope/controller is 'destroyed'
+    		$scope.$on('$destroy', function() {
+       			$interval.cancel(fetchInterval);
+    		});
+
+    		// kick off initial start
+    		//$scope.start();
+
+
+
+	$scope.newSeries = function(week1, week2)
+	{
+		//$scope.solarData = [];
+		//var query = '{"start":"'+week+'w-ago","tags":[{"name":"SolarData"}]}';
+		var query = '{"cache_time":0,"tags":[{"name":"SolarData","order":"desc"}],"start":'+week1+'w-ago,"end":'+week2+'w-ago}';
+		console.log(query);
+       			$http({
+           		url: '/api/v1/datapoints',
+          		method: 'POST',    
+           		data: query
+         		}).then(function(predixTimeSeriesData){
+				 $scope.solarData = predixTimeSeriesData.data.tags[0].results[0].values.map(
+       			 	function(curVal, index, arr) {
+            				return [curVal[0], curVal[1]];
+        			});
+			});
+		console.log($scope.solarData);
+		return $scope.solarData;
+
+	};
+	*/
     	
     }]);
 });

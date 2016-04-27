@@ -44,6 +44,31 @@ define(['angular', './sample-module'], function (angular, controllers) {
         }).
         success(function(data, status, headers, config) {
             $scope.tsData = data;
+        var temp_SCE = [];
+		var temp_Solar = [];		
+		var temp_trigen = [];
+		angular.forEach($scope.tsData, function(value,index){
+			var sce = [];
+			var solar = [];
+			var trigen = [];
+			try{
+				var timestamp = parseInt(value.Timestamp) * 1000;
+				sce.push(timestamp, parseFloat(value.SCE));
+				solar.push(timestamp, parseFloat(value.Solar));
+        			trigen.push(timestamp, parseFloat(value.Trigen) * -1);
+
+	
+				temp_trigen.push(trigen);
+        			temp_SCE.push(sce);
+        			temp_Solar.push(solar);
+			}
+			catch(err){
+				console.log("error");
+			}
+	     });
+	$scope.solarData = angular.toJson(temp_Solar);
+   	$scope.trigenData = angular.toJson(temp_trigen);
+   	$scope.sceData = angular.toJson(temp_SCE);	
         }).error(function(data, status, headers, config) {});
         
         // This will update the values when the date range has been changed
