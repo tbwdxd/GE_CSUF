@@ -79,16 +79,18 @@ def scheduler(fileName):
 
 							# If the currentOptimized day has no data then give it some
 							if (item["bestStarts"] == [] or item["bestEnds"] == []):
+								item["bestStarts"] = timeVarstart
+								item["bestEnds"] = timeVarend
 								aDayWasBetter = True
 								break
 							if (int(hour) < int(datetime.datetime.strptime(item["bestStarts"][0], '%H:%M').strftime('%H')) and int(minute) < int(datetime.datetime.strptime(item["bestStarts"][0], '%H:%M').strftime('%M'))):
 								aDayWasBetter = True
 							if (int(hour) > int(datetime.datetime.strptime(item["bestEnds"][0], '%H:%M').strftime('%H')) and int(minute) > int(datetime.datetime.strptime(item["bestEnds"][0], '%H:%M').strftime('%M'))):
 								aDayWasBetter = True
-						if (aDayWasBetter == True):
-							betterDays.append(currDay)
-							item["bestStarts"] = timeVarstart
-							item["bestEnds"] = timeVarend
+							if (aDayWasBetter == True):
+								item["bestStarts"] = timeVarstart
+								item["bestEnds"] = timeVarend
+								betterDays.append(currDay)
 							
 
 				# Day already exits see if this day is better
@@ -116,10 +118,11 @@ def scheduler(fileName):
 			if (monthIsIn == False):
 				temp = {"name": currMonth, "days": dayData}
 				monthData.append(temp)
-				dayData = []
+
 
 			# Switch to this next month
 			aDayWasBetter = False
+			dayData = []
 			currMonth = month
 
 		# Count the lines
