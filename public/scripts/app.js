@@ -40,10 +40,11 @@ define([
             session: {},
             tabs: [
             	 {state: 'home', label: 'Home'},
-                { state: 'dashboards', label: 'EcoDashboard', subitems: [
-                	{state: 'total', label: 'Monthly Output'}
-                	]},
-		{state: 'about', label: 'About Us'}
+                {state: 'dashboards', label: 'EcoDashboard'},
+				{state: 'real-time', label: 'Real Time Monitor'},
+				{state: 'total', label: 'Monthly Output'},
+				{state: 'about', label: 'About Us'},
+				
             ]
         };
 
