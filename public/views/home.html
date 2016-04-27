@@ -10,7 +10,7 @@
 	top: 0;
 	margin-top: 15%;
 }	
-h1  {
+.title {
 	text-transform: uppercase;
 	color: white;
 	font-size: 45px;
@@ -19,12 +19,30 @@ h1  {
 p {
 	color: white;
 }
-	
+
+#navbar {
+	position: absolute;
+	background-color: rgba(0,0,0,0);
+}
+
+.px-app-nav-0 a.selected.px-app-nav, .px-app-nav-0 a.selected.px-app-nav:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+.px-app-nav-0 a.px-app-nav:hover {
+	background-color: rgba(0,0,0,0.3);
+        -webkit-transition-delay:0.1s;     
+        -moz-transition-delay:0.1s; 
+        -ms-transition-delay:0.1s;     
+        -o-transition-delay:0.1s;     
+        transition-delay:0.1s;     
+}
+
 .bg_container {
 	position: relative;
 	display: inline-block;
+	z-index: 2;
 }
-	
+
 .bg_img {
 	width:100%;
 	max-height: 705px;
@@ -39,6 +57,39 @@ p {
 	width: 100%; 
 	height: 100%; 
 	max-height: 705px;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.button-view-now {
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	width: 100px;
+	padding: 0.4em;
+	margin: auto;
+}
+p.button-view:hover {
+	background-color: #081F30;
+	text-decoration: none;
+	border-color: #081F30;
+	border-width: 1px;
+	border-style: solid;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }
 </style>
 
@@ -48,8 +99,10 @@ p {
 	<div class="bg_pattern"></div>
 </div>
 <div class="header">
-	<h1>Titan Power App</h1>
+	<h1 class="title">Titan Power App</h1>
 	<p>Analyze the power consumption of the California State University Campus</p>
+	<p style="padding-top: 10px;"></p>
+	<a href="/dashboards"><p class="button-view-now button-view">view app</p></a>
 </div>
 	
 <!--<px-card class="mainInfo header">
