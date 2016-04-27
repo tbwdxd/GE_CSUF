@@ -1,4 +1,4 @@
-<div ng-controller="TableCtrl">
+<div ng-controller="HomeCtrl">
   <px-card>  
     <section>
       <my-app-realtime></my-app-realtime>
@@ -36,7 +36,7 @@
     var now = +new Date(1997, 9, 3);
     var oneDay = 24 * 3600 * 1000;
     var value = Math.random() * 1000;
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 2000; i++) {
       data.push(randomData());
     }
 
@@ -46,7 +46,13 @@
       
           this.options = {
               title: {
-                  text: '动态数据 + 时间坐标轴'
+                  text: 'Real-time Data Monitor'
+              },
+              grid: {
+                  left: '3%',
+                  right: '4%',
+                  bottom: '3%',
+                  containLabel: true
               },
               tooltip: {
                   trigger: 'axis',
@@ -61,24 +67,24 @@
               },
               xAxis: {
                   type: 'time',
-                  splitLine: {
-                      show: false
-                  }
+                  
               },
               yAxis: {
                   type: 'value',
                   boundaryGap: [0, '100%'],
-                  splitLine: {
-                      show: false
-                  }
+                  
               },
               series: [{
                   name: '模拟数据',
+                  lineStyle:{normal:{color: '#F5B041'}},
                   type: 'line',
+                  stack: 'Output',
+                  areaStyle: {normal: {color: '#F8C471'}},
                   showSymbol: false,
                   hoverAnimation: false,
                   data: data
-              }]
+              }
+              ]
           }
           var mychart = this;  
           app.timeTicket = setInterval(function () {
@@ -91,7 +97,7 @@
                       data: data
                   }]
               };
-          }, 1000);;
+          }, 2000);;
         }
       })
     </script>
