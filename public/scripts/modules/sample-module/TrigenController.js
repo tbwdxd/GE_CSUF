@@ -30,7 +30,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
         });
         
         
-        $scope.update = function(Month, Hour) {
+        $scope.update = function(Month) {
         	
         		angular.forEach($scope.trigenSchedule, function(value, index){
         		

@@ -106,9 +106,9 @@ define(['angular', './sample-module'], function (angular, controllers) {
    			$scope.allAverage = (totalsolar + totalsce + totaltrigen) / counter;
    			var totals = (totalsolar + totalsce + totaltrigen);
    			
-   			$scope.solarPercent = totals / totalsolar;
-   			$scope.scePercent = totals / totalsce;
-   			$scope.trigenPercent = totals / totaltrigen;
+   			$scope.solarPercent = (totalsolar / totals) * 100 ;
+   			$scope.scePercent = (totalsce / totals) * 100;
+   			$scope.trigenPercent = (totaltrigen / totals) * 100;
         	
         	};
         	 console.log($scope.solarData);
