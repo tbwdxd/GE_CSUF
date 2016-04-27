@@ -52,6 +52,12 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 templateUrl: 'views/total.html',
                 controller: 'TableCtrl'
             })
+           .state('trigen', {
+            	parent: 'secure',
+                url: '/trigen',
+                templateUrl: 'views/trigen.html',
+                controller: 'TableCtrl'
+            })
 	    	.state('about', {
             	url: '/about',
             	templateUrl: 'views/about.html',

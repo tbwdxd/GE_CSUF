@@ -1,0 +1,106 @@
+<script type="text/javascript">
+
+var formSubmit = function() {
+    			var scope = angular.element(document.getElementById("trigenboard")).scope();
+    			var month = document.querySelector("#monthData").value;
+    			console.log(month);
+    			console.log(scope);
+       		scope.$apply(function() {
+       			scope.update(month);
+       		});
+ 			};
+
+</script>
+
+<div id="trigenboard" ng-controller="TrigenCtrl">
+<style type="text/css">
+	h1 {
+		font-weight: normal;
+	}
+	.padding {
+		padding-top: 90px;
+	}
+	 .background {
+	 background-color: rgb(225, 226, 229);
+	 }
+	 .ecomagination{
+	 font-size: 30px;
+	 font-family: "GE Inspira";
+	 font-style: bold;
+	 color: rgb(13, 100, 171);
+	 }
+</style>
+
+   <px-card>
+	   <div class="padding"></div>
+      <h1 style="text-align: center;">Trigeneration Plant Optimization</h1>
+   </px-card>
+   
+   <px-card>
+   	<form>
+   		<label style="font-size=25px">Enter the month of maintenance</label>
+			<select id="monthData">
+  				<option value="January">January</option>
+  				<option value="February">February</option>
+  				<option value="March">March</option>
+  				<option value="April" >April</option>
+  				<option value="May" >May</option>
+  				<option value="June" >June</option>
+  				<option value="July" >July</option>
+  				<option value="August" >August</option>
+  				<option value="September" >September</option>
+  				<option value="October" >October</option>
+  				<option value="November" >November</option>
+  				<option value="December" >December</option>
+</select>
+			<input type="submit" onclick="formSubmit()"></input>  	
+   	</form>
+   	<h1>Best Trigen Schedule will make better looking later.  It will take the start and end times and show time slots to perform maintenance</h1>
+   	<h1>Showing the times that will cause the least increase in SCE</h1>
+   	<table style="width: 100%; text-align: left">
+		<thead>
+		<th>Month</th>
+		<th>Day</th>
+		<th>StartTimes</th>
+		<th>EndTimes</th>
+
+		</thead>  
+		<tr>
+		<td>{{monthsData.name}}</td>
+		</tr>
+		<tr ng-repeat="day in monthsData.days">
+		<td></td>
+		<td>{{day.name}}</td>
+		<td>{{day.bestStarts}}</td>
+		<td>{{day.bestEnds}}</td>	
+		</tr>	
+		
+		</tr> 	
+   	</table>
+   	<p>Based on previous data</p>
+   
+   </px-card>
+
+<px-card>
+	<a name="trigen"></a>
+	<br><h1 align="center">Trigeneration Plant Downtime Impact</h1>
+	<table style="width: 100%; text-align: left">
+<thead>
+<th>StartTime</th>
+<th>EndTime</th>
+<th>Total Increase in SCE</th>
+<th>Total Cost</th>
+</thead>	
+
+	<tr ng-repeat="down in downTime">
+	<td>{{down.startDate  * 1000 | date : 'short' : 'UTC'}}</td>	
+	<td>{{down.endDate * 1000 | date : 'short' : 'UTC'}}</td>
+	<td>{{down.sceTotal | number : 2}}	kWh</td>
+	<td>{{down.sceTotal * price | currency}}</td>
+	</tr>
+	</table>
+	<p>Total increase in SCE is calculated by using the total average SCE comsumption.</p>
+	<p>This is an estimate!</p>
+	</px-card>
+
+</div>
