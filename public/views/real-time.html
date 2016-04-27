@@ -2,18 +2,9 @@
   <px-card style="padding-top: 100px;">  
     <section>
       <my-app-realtime></my-app-realtime>
-        <dom-module id="my-app-realtime">
+        <dom-module id="my-app-realtime1">
           <template>
-            <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
-          </template>
-        </dom-module>
-    </section>
-
-    <section>
-      <my-app-realtime2></my-app-realtime2>
-        <dom-module id="my-app-realtime2">
-          <template>
-            <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
+            <echarts-component width="100%" height="700px" options={{options}}></echarts-component>
           </template>
         </dom-module>
     </section>
@@ -36,12 +27,12 @@
     var now = +new Date(1997, 9, 3);
     var oneDay = 24 * 3600 * 1000;
     var value = Math.random() * 1000;
-    for (var i = 0; i < 2000; i++) {
+    for (var i = 0; i < 4000; i++) {
       data.push(randomData());
     }
 
     Polymer({
-        is: "my-app-realtime2",
+        is: "my-app-realtime1",
         ready() {
       
           this.options = {
@@ -97,7 +88,7 @@
                       data: data
                   }]
               };
-          }, 2000);;
+          }, 4000);;
         }
       })
     </script>
