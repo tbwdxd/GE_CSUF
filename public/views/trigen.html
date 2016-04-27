@@ -12,10 +12,12 @@
 var formSubmit = function() {
     			var scope = angular.element(document.getElementById("trigenboard")).scope();
     			var month = document.querySelector("#monthData").value;
+    			//var hour = document.querySelector("#hourInput").value;
+    			var hour = 0
     			console.log(month);
-    			console.log(scope);
+    			console.log(hour);
        		scope.$apply(function() {
-       			scope.update(month);
+       			scope.update(month, hour);
        		});
  			};
 
@@ -62,31 +64,28 @@ var formSubmit = function() {
   				<option value="November" >November</option>
   				<option value="December" >December</option>
 </select>
+			<!--<label>Enter amount of hours: </label>
+			<input type="text" id="hourInput"></input>-->
 			<input type="submit" onclick="formSubmit()"></input>  	
    	</form>
-   	<h1>Best Trigen Schedule will make better looking later.  It will take the start and end times and show time slots to perform maintenance</h1>
-   	<h1>Showing the times that will cause the least increase in SCE</h1>
+   	<h1 style="text-align: center; font-size: 20px">Best time to perform maintenance in {{month}}</h1>
    	<table style="width: 100%; text-align: left">
 		<thead>
-		<th>Month</th>
-		<th>Day</th>
-		<th>StartTimes</th>
-		<th>EndTimes</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
 
 		</thead>  
-		<tr>
-		<td>{{monthsData.name}}</td>
-		</tr>
-		<tr ng-repeat="day in monthsData.days">
-		<td></td>
-		<td>{{day.name}}</td>
-		<td>{{day.bestStarts}}</td>
-		<td>{{day.bestEnds}}</td>	
+		<tr ng-repeat="time in daysBlock">{{time}}</tr>	
 		</tr>	
 		
 		</tr> 	
    	</table>
-   	<p>Based on previous data</p>
+   	<p style="font-size: 15px">Based on previous data and shows best time to perform maintenance on the Trigeneration plant</p>
    
    </px-card>
 
