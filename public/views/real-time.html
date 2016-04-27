@@ -1,94 +1,99 @@
 <div ng-controller="TableCtrl">
-  <px-card>
-	  
+  <px-card>  
     <section>
       <my-app-realtime></my-app-realtime>
         <dom-module id="my-app-realtime">
           <template>
-            <echarts-component id='mychart' width="900px" height="700px" options={{options}}></echarts-component>
+            <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
           </template>
         </dom-module>
     </section>
+
+    <section>
+      <my-app-realtime2></my-app-realtime2>
+        <dom-module id="my-app-realtime2">
+          <template>
+            <echarts-component width="900px" height="700px" options={{options}}></echarts-component>
+          </template>
+        </dom-module>
+    </section>
+
+    <!-- test new real time chart-->
     <script>
-      var app = {};
-      //var dom = document.getElementById("my-app-realtime");
-      var base = +new Date(2014, 9, 3);
-      var oneDay = 24 * 3600 * 1000;
-      var date = [];
-      var data = [Math.random() * 150];
-      var now = new Date(base);
-      function addData(shift) {
-        now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
-        date.push(now);
-        data.push((Math.random() - 0.4) * 10 + data[data.length - 1]);
-        if (shift) {
-          date.shift();
-          data.shift();
-        }
-        now = new Date(Date.parse(now) + 24 * 3600 * 1000);
+    function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
+            Math.round(value)
+        ]
       }
-      for (var i = 1; i < 100; i++) {
-        addData();
-      }
-      
-      var $ = function(selector) { return typeof selector === "string" ? document.querySelector(selector) : selector || null }
-      var $$ = function(selector) { return [].slice.call(document.querySelectorAll(selector)) }
-      
-	  
-     
-      Polymer({
-        is: "my-app-realtime",
+    }
+    var app = {};
+    var data = [];
+    var now = +new Date(1997, 9, 3);
+    var oneDay = 24 * 3600 * 1000;
+    var value = Math.random() * 1000;
+    for (var i = 0; i < 1000; i++) {
+      data.push(randomData());
+    }
+
+    Polymer({
+        is: "my-app-realtime2",
         ready() {
-			
+      
           this.options = {
-            xAxis: {
-              type: 'category',
-              boundaryGap: false,
-              data: date
-            },
-            yAxis: {
-              boundaryGap: [0, '50%'],
-              type: 'value'
-            },
-            series: [
-            {
-              name:'成交',
-              type:'line',
-              smooth:true,
-              symbol: 'none',
-              stack: 'a',
-              areaStyle: {
-                normal: {}
+              title: {
+                  text: '动态数据 + 时间坐标轴'
               },
-              data: data
-            }]
+              tooltip: {
+                  trigger: 'axis',
+                  formatter: function (params) {
+                      params = params[0];
+                      var date = new Date(params.name);
+                      return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+                  },
+                  axisPointer: {
+                      animation: false
+                  }
+              },
+              xAxis: {
+                  type: 'time',
+                  splitLine: {
+                      show: false
+                  }
+              },
+              yAxis: {
+                  type: 'value',
+                  boundaryGap: [0, '100%'],
+                  splitLine: {
+                      show: false
+                  }
+              },
+              series: [{
+                  name: '模拟数据',
+                  type: 'line',
+                  showSymbol: false,
+                  hoverAnimation: false,
+                  data: data
+              }]
           }
-		  var mychart = this;  
+          var mychart = this;  
           app.timeTicket = setInterval(function () {
-            addData(true);
-			mychart.options =  {
-            xAxis: {
-               data: date
-             },
-            series: [{
-               name:'成交',
-               data: data
-            }]
-          };
-          }, 500);;
-		 if (option && typeof option === "object") {
-    var startTime = +new Date();
-    myChart.setOption(option, true);
-    var endTime = +new Date();
-    var updateTime = endTime - startTime;
-    console.log("Time used:", updateTime);
-}
+              for (var i = 0; i < 5; i++) {
+                  data.shift();
+                  data.push(randomData());
+              }
+              mychart.options ={
+                  series: [{
+                      data: data
+                  }]
+              };
+          }, 1000);;
         }
       })
-      //console.log($)
-	  //console.log($("#my-app-realtime"))
-       
     </script>
-
   </px-card>
 </div>
