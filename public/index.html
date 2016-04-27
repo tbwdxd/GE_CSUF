@@ -31,6 +31,17 @@
   top: 0;
 }
 
+.float-right {
+	float: right;
+}
+	
+.list-inline {
+	position: absolute;
+}
+
+.viewport:not([style-scope]):not(.style-scope) {
+	width: 100%;
+}
 </style>
 	
 <body class="app" data-ng-controller="MainCtrl">
@@ -60,7 +71,7 @@
 
 <footer class="flex flex--middle" role="contentinfo" style="background-color: #3b3b3f">
 		<div class="viewport">
-            <nav class="flex flex--right flex--middle" role="navigation">
+            <nav role="navigation">
                 <ul class="list-inline">
                     <li class="u-mh-">
                         <a href="http://www.ge.com/privacy" target="_blank">Privacy</a>
@@ -72,9 +83,7 @@
                         <a href="http://gecsu.ecs.fullerton.edu/" target="_blank">GE CSU Innovation</a>
                     </li>
                 </ul>
-                <div class="u-mr--">
-					<small class="u-ml+">©2015 General Electric</small> 
-				</div>
+				<div class="float-right">©2016 General Electric</div>						  
             </nav>
 		</div>
     </footer>
