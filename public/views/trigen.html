@@ -13,7 +13,7 @@ var formSubmit = function() {
     			var scope = angular.element(document.getElementById("trigenboard")).scope();
     			var month = document.querySelector("#monthData").value;
     			console.log(month);
-    			console.log(scope);
+    			console.log(hour);
        		scope.$apply(function() {
        			scope.update(month);
        		});
@@ -26,6 +26,27 @@ var formSubmit = function() {
 	h1 {
 		font-weight: normal;
 	}
+<<<<<<< HEAD
+=======
+	body {
+    	font-family: "GE Inspira Sans", sans-serif;
+	}
+	a.px-app-nav:hover {
+	   text-decoration: none;
+	}
+    	font-size: 0.9375em;
+	}
+  a.px-app-nav:hover {
+    text-decoration: none;
+  }
+  a.px-app-nav:visited {
+    text-decoration: none;
+  }
+  a.px-app-nav:active {
+    text-decoration: none;
+  }
+>>>>>>> 150160b7e5d01ca33ec79926e84ffc4d11363903
+>>>>>>> 2dbf66e18872c4efb210ee851614f03255c23441
 	.padding {
 		padding-top: 90px;
 	}
@@ -75,32 +96,48 @@ var formSubmit = function() {
   				<option value="October" >October</option>
   				<option value="November" >November</option>
   				<option value="December" >December</option>
-</select>
+			</select>
 			<input type="submit" onclick="formSubmit()"></input>  	
    	</form>
-   	<h1>Best Trigen Schedule will make better looking later.  It will take the start and end times and show time slots to perform maintenance</h1>
-   	<h1>Showing the times that will cause the least increase in SCE</h1>
+   	<h1 style="text-align: center; font-size: 20px">Best time to perform maintenance in {{month}}</h1>
    	<table style="width: 100%; text-align: left">
 		<thead>
-		<th>Month</th>
-		<th>Day</th>
-		<th>StartTimes</th>
-		<th>EndTimes</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
 
-		</thead>  
-		<tr>
-		<td>{{monthsData.name}}</td>
-		</tr>
-		<tr ng-repeat="day in monthsData.days">
-		<td></td>
-		<td>{{day.name}}</td>
-		<td>{{day.bestStarts}}</td>
-		<td>{{day.bestEnds}}</td>	
-		</tr>	
-		
-		</tr> 	
+		</thead> 
+		<td>
+		<tr ng-repeat="block in monday">{{block}}</tr>		
+		</td> 
+		<td>
+		<tr ng-repeat="block in tuesday">{{block}}</tr>		
+		</td>	
+				<td>
+		<tr ng-repeat="block in wednesday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in thurdays">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in friday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in saturday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in sunday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in monday">{{block}}</tr>		
+		</td>
+		 	
    	</table>
-   	<p>Based on previous data</p>
+   	<p style="font-size: 15px">Based on previous data and shows best time to perform maintenance on the Trigeneration plant</p>
    
    </px-card>
 
