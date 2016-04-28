@@ -7,19 +7,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
 
-<script type="text/javascript">
 
-var formSubmit = function() {
-    			var scope = angular.element(document.getElementById("trigenboard")).scope();
-    			var month = document.querySelector("#monthData").value;
-    			console.log(month);
-    			console.log(hour);
-       		scope.$apply(function() {
-       			scope.update(month);
-       		});
- 			};
-
-</script>
 
 <div id="trigenboard" ng-controller="TrigenCtrl">
 <style type="text/css">
@@ -70,13 +58,23 @@ var formSubmit = function() {
 	 	text-align: left;
 	 }
 </style>
-
    <px-card>
 	   <div class="padding"></div>
       <h1 style="text-align: center; font-size: 20px">Trigeneration Plant Optimization</h1>
    </px-card>
-   
    <px-card class="background">
+   <script type="text/javascript">
+		var formSubmit = function() {
+		    var scope = angular.element(document.getElementById("trigenboard")).scope();
+		    var month = document.querySelector("#monthData").value;
+		    console.log(month);
+		    console.log(hour);
+		    scope.$apply(function() {
+		    	scope.update(month);
+		    });
+		};
+		var block = "AHH";
+	</script>
    	<form>
    		<label style="font-size=25px">Enter the month of maintenance</label>
 			<select id="monthData">
