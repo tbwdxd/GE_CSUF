@@ -15,22 +15,38 @@ ul:not([style-scope]):not(.style-scope), ol:not([style-scope]):not(.style-scope)
 	margin-left: 0;
 }
 .float-menu {
-	background-color: #293c55;
 	width: 20%;
-	height: 300px;
 	right: 0;
-	margin-right: 5%;
+	margin-right: 7%;
 	border-radius: 3px;
 	position: fixed;
 	z-index: 30;
+	border-color: #dfdfdf;
+	border-width: 1px;
+	border-style: solid;
+}
+.menu-pad {
+	top: 5px;
+
 }
 .menu-style {
-	line-height: 3;
 	list-style: none;
-	color: white;
 }
+
 </style>
 
+<script>
+	var $window = $(window);
+	var nav = $('#new-nav');
+	$window.scroll(function(){
+    if ($window.scrollTop() >= 50) {
+       nav.addClass('menu-pad');
+    }
+    else {
+       nav.removeClass('menu-pad');
+    }
+    });
+</script>
 
 <script>
     $(document).ready(function() {
@@ -47,14 +63,18 @@ ul:not([style-scope]):not(.style-scope), ol:not([style-scope]):not(.style-scope)
 
 <div ng-controller="HomeCtrl">
 	<div class="pad-top"></div>
-	<div class="float-menu">
+	<div id="new-nav" class="float-menu">
 		<ul class="menu-style">
-			<li>Introduction</li>
-			<a href="#economic-improvement"><li>Economic Improvement</li></a>
-			<a href="#collecting-data"><li>Collecting Data</li></a>
+			<a href="#introduction" style="color: black; text-decoration: none"><li>Introduction</li></a>
+			<a href="#economic-improvement" style="color: black; text-decoration: none"><li>Economic Improvement</li></a>
+			<a href="#collecting-data" style="color: black; text-decoration: none"><li>Collecting Data</li></a>
+			<a href="#accomplishments" style="color: black; text-decoration: none"><li>Accomplishments</li></a>
+			<a href="#predix-services" style="color: black; text-decoration: none"><li>Predix Services</li></a>
+			<a href="#open-source-libraries" style="color: black; text-decoration: none"><li>Open Source Libraries</li></a>
+			<a href="#team-members" style="color: black; text-decoration: none"><li>Team Members</li></a>
+			<a href="#contact" style="color: black; text-decoration: none"><li>Contact</li></a>
 		</ul>
 	</div>
-
 	<div class="viewport">
 		<div class="content">
 			<a name="introduction"></a>
@@ -69,6 +89,7 @@ ul:not([style-scope]):not(.style-scope), ol:not([style-scope]):not(.style-scope)
 			<h1 class="pad-top">Collecting Data</h1>
 			<p>We collected data from the three different power components that make up the power supply on California State Fullerton campus. These include the Trigeneration Plant installed 2010, Photovoltaic solar panels installed in 2012, and Southern California Edison. These three different power sources provide the campus with all its power needs. Currently, we have two years of data stored in the Predix cloud which our Titan Power App is based on. The facilities on CSUF campus have their own database. The database doesn’t allow real time connection through the Internet.</p>
 
+			<a name="accomplishments"></a>
 			<h1 class="pad-top">Accomplishments</h1>
 			<p>Step 1: Get Insights
 			We have completed this step. Two years of data were collected from the campus facilities and an application was developed with user friendly interface.</p>
@@ -81,7 +102,8 @@ ul:not([style-scope]):not(.style-scope), ol:not([style-scope]):not(.style-scope)
 			The analysis of seasonal changes allows automatic scheduling of the Trigeneration plant.
 			The analysis of downtimes and costs allows prediction of maintenance of both the solar panels and the Trigeneration plant.
 			</p>
-
+			
+			<a name="predix-services"></a>
 			<h1 class="pad-top">Predix Services</h1>
 			<ul>
 				<li>Predix Dashboard Seed</li>
@@ -91,17 +113,20 @@ ul:not([style-scope]):not(.style-scope), ol:not([style-scope]):not(.style-scope)
 				<li>Predix Machine Simulator</li>
 			</ul>
 
+			<a name="open-source-libraries"></a>
 			<h1 class="pad-top">Open Source Libraries</h1>
 			<ul>
 				<li><a href="http://getbootstrap.com/" style="color: black;">Bootstrap</a></li>
 				<li><a href="https://github.com/ecomfe/echarts" style="color: black;">echarts</a></li>
 			</ul>
 
+			<a name="team-members"></a>
 			<h1 class="pad-top">Team Members</h1>
 			<p>Bowen Tian, Harpreet Saini, Joseph Porter, Luis Covarrubias, Shelley Pham, Yijie Sun, Yuting Zhang</p>
 			<p>Advisor: Dr. Yun Tian</p>
 			<p>Check out our <a href="https://github.com/tbwdxd/GE_CSUF/tree/luis_branch">github</a>.</p>
 
+			<a name="contact"></a>
 			<h1 class="pad-top">Contact</h1>
 			<p>See more information <a href="http://gecsu.ecs.fullerton.edu/contact.php">here</a>.</p>
 
