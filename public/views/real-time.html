@@ -1,4 +1,4 @@
-<div ng-controller="HomeCtrl">
+<div id="Dashboard" ng-controller="DashboardsCtrl">
   <px-card style="padding-top: 100px;">  
     <section>
       <my-app-realtime></my-app-realtime>
@@ -65,6 +65,14 @@
                   boundaryGap: [0, '100%'],
                   
               },
+              dataZoom: [{
+                  type: 'inside',
+                  start: 0,
+                  end: 10
+              }, {
+                  start: 0,
+                  end: 10
+              }],
               series: [{
                   name: '模拟数据',
                   lineStyle:{normal:{color: '#F5B041'}},

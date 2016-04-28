@@ -26,6 +26,7 @@ p {
 #navbar {
 	position: absolute;
 	background-color: rgba(0,0,0,0);
+	z-index: 20;
 }
 
 .px-app-nav-0 a.selected.px-app-nav, .px-app-nav-0 a.selected.px-app-nav:hover {
@@ -53,7 +54,6 @@ p {
 }
 	
 .bg_pattern { 
-	background-image: url(/images/bg_pattern.png); 
 	position: absolute; 
 	opacity: 0.8; 
 	left: 0px; 
@@ -97,27 +97,72 @@ a:active {
     text-decoration: none;
 }
 
-#myBtn {
-    width: 300px;
-    padding: 10px;
-    font-size:20px;
+.popup-modal {
+	top: 0;
+	height : 300px;
+    background-color: white;
+    z-index: 9999999;
+    width: 50%;
     position: absolute;
-    margin: 0 auto;
-    right: 0;
-    left: 0;
-    bottom: 50px;
-    z-index: 9999;
+    top: 33%;
+    left: 24%;
+    border-radius: 3px;
+}
+.popup-overlay {
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 21;
+	top: 0;
+	left: 0;
+}
+.popup-text {
+	color: black;
+	float: none;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
 }
 </style>
 
+
 <div ng-controller="HomeCtrl">
-<div class="bg_container">
-	<img src="/images/solar-panels.jpg" class="bg_img">
-	<div class="bg_pattern"></div>
+	<div class="bg_container">
+		<img src="/images/solar-panels.jpg" class="bg_img">
+		<div class="bg_pattern"></div>
+	</div>
+	<div class="header">
+		<h1 class="title">Titan Power App</h1>
+		<p>Analyze the power consumption of the California State University Campus</p>
+		<p style="padding-top: 10px;"></p>
+		<p class="button-view-now button-view"><a href="/dashboards" style="color: white">view app</a></p>
+	</div>
+	<div style="display:none" id="popup">
+		<div class="popup-overlay"></div>
+		<div class="popup-modal">
+			<div style="text-align: center; padding-top: 12%">
+				<h1 style="color: black;">Please sign in to access content</h1>
+				<px-login class="popup-text"></px-login>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="header">
-	<h1 class="title">Titan Power App</h1>
-	<p>Analyze the power consumption of the California State University Campus</p>
-	<p style="padding-top: 10px;"></p>
-	<p class="button-view-now button-view"><a href="/dashboards" style="color: white">view app</a></p>
-</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    if(localStorage.getItem('popState') != 'shown'){
+        $("#popup").delay(1000).fadeIn();
+        localStorage.setItem('popState','shown')
+    }
+
+    $('#popup-close').click(function(e) // You are clicking the close button
+    {
+    $('#popup').fadeOut(); // Now the pop up is hidden.
+    });
+    $('#popup').click(function(e) 
+    {
+    $('#popup').fadeOut(); 
+    });
+});
+</script>

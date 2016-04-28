@@ -44,7 +44,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
             	parent: 'secure',
                 url: '/real-time',
                 templateUrl: 'views/real-time.html',
-                controller: 'HomeCtrl'
+                controller: 'realtimeCtrl'
             })
 		    .state('total', {
             	parent: 'secure',
@@ -58,9 +58,9 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 templateUrl: 'views/trigen.html',
                 controller: 'TrigenCtrl'
             })
-	    	.state('about', {
-            	url: '/about',
-            	templateUrl: 'views/about.html',
+	    	.state('documentation', {
+            	url: '/documentation',
+            	templateUrl: 'views/documentation.html',
             	controller: 'HomeCtrl'
             });
 

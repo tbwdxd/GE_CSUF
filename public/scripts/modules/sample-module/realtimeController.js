@@ -2,7 +2,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
     'use strict';
 
     // Controller definition
-    controllers.controller('DashboardsCtrl', ['$scope', '$log', '$http', 'PredixAssetService', 'PredixViewService', function($scope, $log, $http, PredixAssetService, PredixViewService) {
+    controllers.controller('realtimeCtrl', ['$scope', '$log', '$http', 'PredixAssetService', 'PredixViewService', function($scope, $log, $http, PredixAssetService, PredixViewService) {
         	$scope.tsData = null;
         	
         	// Chart Values
@@ -37,52 +37,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
    		// Price per kilowatt hour the trigen plant runs on nautral gas
    		$scope.priceSCE = 0.135
    		$scope.priceNaturalGas = 0.08
-
-	//get default solar
-	$http({
-           url: '/api/v1/datapoints',
-           method: 'POST',    
-           data: '{"cache_time":0,"tags":[{"name":"SolarData","order":"desc"}],"start":1396944000000,"end":1397289600000}'
-           }).then(function(predixTimeSeriesData){
-		$scope.solarData = predixTimeSeriesData.data.tags[0].results[0].values.map(
-       		function(curVal, index, arr) {
-            		return [curVal[0], curVal[1]];
-        	});
-	});
-	//get default Trigen
-	$http({
-           url: '/api/v1/datapoints',
-           method: 'POST',    
-           data: '{"cache_time":0,"tags":[{"name":"Trigen-Data","order":"desc"}],"start":1396944000000,"end":1397289600000}'
-           }).then(function(predixTimeSeriesData){
-		$scope.trigenData = predixTimeSeriesData.data.tags[0].results[0].values.map(
-       		function(curVal, index, arr) {
-            		return [curVal[0], curVal[1]];
-        	});
-	});
-
-	//get default SCE
-	$http({
-           url: '/api/v1/datapoints',
-           method: 'POST',    
-           data: '{"cache_time":0,"tags":[{"name":"SCE-Data","order":"desc"}],"start":1396944000000,"end":1397289600000}'
-           }).then(function(predixTimeSeriesData){
-		$scope.sceData = predixTimeSeriesData.data.tags[0].results[0].values.map(
-       		function(curVal, index, arr) {
-            		return [curVal[0], curVal[1]];
-        	});
-	});
-
-	$http({
-            method: 'GET',
-            url: '../sample-data/completeData.json'//change this url to new json file location
-        }).
-        success(function(data, status, headers, config) {
-            $scope.tsData = data;
-        }).error(function(data, status, headers, config) {});
-        
-
-   	/*
+   		
         $http({
             method: 'GET',
             url: '../sample-data/completeData.json'//change this url to new json file location
@@ -100,12 +55,12 @@ define(['angular', './sample-module'], function (angular, controllers) {
 				var timestamp = parseInt(value.Timestamp) * 1000;
 				sce.push(timestamp, parseFloat(value.SCE));
 				solar.push(timestamp, parseFloat(value.Solar));
-        		trigen.push(timestamp, parseFloat(value.Trigen) * -1);
+        			trigen.push(timestamp, parseFloat(value.Trigen) * -1);
 
 	
 				temp_trigen.push(trigen);
-        		temp_SCE.push(sce);
-        		temp_Solar.push(solar);
+        			temp_SCE.push(sce);
+        			temp_Solar.push(solar);
 			}
 			catch(err){
 				console.log("error");
@@ -115,8 +70,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
    	$scope.trigenData = angular.toJson(temp_trigen);
    	$scope.sceData = angular.toJson(temp_SCE);	
         }).error(function(data, status, headers, config) {});
-        */
-
+        
         // This will update the values when the date range has been changed
         $scope.update = function(fromTime, toTime) {
         	var tempsce = [];
@@ -184,6 +138,91 @@ define(['angular', './sample-module'], function (angular, controllers) {
         	};
         	 console.log($scope.solarData);
   
+         $http({
+            method: 'POST',
+            url: '/api/v1/datapoints',
+            withCredentials: true,
+            data: '{"start":"1y-ago","tags":[{"name":"Compressor-2015:CompressionRatio","groups":[{"name":"quality"}]}]}'
+        }).then(function(predixTimeSeriesData, status){
+           $scope.testData = predixTimeSeriesData;
+         });
         
+        
+
+        /*PredixAssetService.getAssetsByParentId('root').then(function (initialContext) {
+
+            //pre-select the 1st asset
+            initialContext.data[0].selectedAsset = true;
+            $scope.initialContexts = initialContext;
+            $scope.initialContextName = initialContext.data[0].name;
+
+            //load view selector
+            $scope.openContext($scope.initialContexts.data[0]);
+        }, function (message) {
+            $log.error(message);
+        });
+
+        $scope.decks = [];
+        $scope.selectedDeckUrl = null;
+
+        // callback for when the Open button is clicked
+        $scope.openContext = function (contextDetails) {
+
+            // need to clean up the context details so it doesn't have the infinite parent/children cycle,
+            // which causes problems later (can't interpolate: {{context}} TypeError: Converting circular structure to JSON)
+            var newContext = angular.copy(contextDetails);
+            newContext.children = [];
+            newContext.parent = [];
+
+            // url end point can change from context to context
+            // so the same card can display different data from different contexts
+
+            var url = {
+                'parent': {
+                    'datagrid-data': '/sample-data/datagrid-data.json'
+                },
+                'child': {
+                    'core-vibe-rear-cruise': '/sample-data/core-vibe-rear-cruise.json',
+                    'delta-egt-cruise': '/sample-data/delta-egt-cruise.json'
+                },
+                'child2': {
+                    'core-vibe-rear-cruise': '/sample-data/core-vibe-rear-cruise0.json',
+                    'delta-egt-cruise': '/sample-data/delta-egt-cruise.json'
+                },
+                'child3': {
+                    'core-vibe-rear-cruise': '/sample-data/core-vibe-rear-cruise1.json',
+                    'delta-egt-cruise': '/sample-data/delta-egt-cruise.json'
+                }
+            };
+
+            newContext.urls = url[newContext.id];
+
+            $scope.context = newContext;
+
+            //Tag string can be classification from contextDetails
+            PredixViewService.getDecksByTags(newContext.classification) // gets all decks for this context
+                .then(function (decks) {
+                    $scope.decks = [];
+
+                    if (decks && decks.length > 0) {
+                        decks.forEach(function (deck) {
+                            $scope.decks.push({name: deck.title, id: deck.id});
+                        });
+                    }
+                });
+        };
+
+        $scope.viewServiceBaseUrl = PredixViewService.baseUrl;
+
+        $scope.getChildren = function (parent, options) {
+            return PredixAssetService.getAssetsByParentId(parent.id, options);
+        };
+
+        $scope.handlers = {
+            itemOpenHandler: $scope.openContext,
+            getChildren: $scope.getChildren
+            // (optional) click handler: itemClickHandler: $scope.clickHandler
+        };*/
     }]);
 });
+
