@@ -44,7 +44,7 @@ define([
                 {state: 'trigen', label: 'Trigeneration Plant'},
 				{state: 'real-time', label: 'Real Time Monitor'},
 				{state: 'total', label: 'Monthly Output'},
-				{state: 'about', label: 'About Us'},
+				{state: 'documentation', label: 'Documentation'},
 				
             ]
         };
