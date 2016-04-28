@@ -14,7 +14,7 @@
       
     //anydata 
     var scope = angular.element(document.getElementById("realtime")).scope();
-    console.log(scope);
+    console.log(scope.scData);
 
 
 
@@ -41,7 +41,7 @@
       data.push(randomData());
     }
 var donechart;
-if (!donechart){
+if (!donechart1){
     Polymer({
         is: "my-app-realtime",
         ready() {
@@ -110,7 +110,7 @@ if (!donechart){
           }, 4000);;
         }
       })
-donechart = true;
+donechart1 = true;
 }
     </script>
   </px-card>

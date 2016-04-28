@@ -44,7 +44,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
             	parent: 'secure',
                 url: '/real-time',
                 templateUrl: 'views/real-time.html',
-                controller: 'TrigenCtrl'
+                controller: 'DashboardsCtrl'
             })
 		    .state('total', {
             	parent: 'secure',
