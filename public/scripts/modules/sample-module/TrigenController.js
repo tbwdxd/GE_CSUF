@@ -36,35 +36,65 @@ define(['angular', './sample-module'], function (angular, controllers) {
         		
         			if (value.name == Month) {
 	        			$scope.monthsData = value;
-	        			$scope.month = Month;
+	        			$scope.month = "Optimal Time for Maintenance in: " + Month;
 	        		}
         	
         	
         		});
         		
         		$scope.daysBlocks = [];
+        		$scope.monday = [];
+        		$scope.tuesday = [];
+    			$scope.wednesday = [];
+    			$scope.thursday = [];
+    			$scope.friday = [];
+    			$scope.saturday = [];
+    			$scope.sunday = [];
+    			var createString = function(beststarts, bestends) {
+
+        					var tempBlock = [];
+        					var len = beststarts.length;
+        					if (bestends.length == len) {
+        						 for (var i = 0; i < len; i++){
+        						 	tempBlock.push(beststarts[i].concat(' - ', bestends[i]));
+        						 	}
+        					}
+        					else if (bestends.length == 0) {
+        						tempBlock.push(beststarts[0].concat(' -  End of day'));	
+        					}
+        					else if (bestends.length == len - 1) {
+        						tempBlock.push(beststarts[0].concat(' - ', bestends[0]));
+        						tempBlock.push(beststarts[1].concat('- End of day'));	
+        					}
+        					
+        					return tempBlock;
+    			}
+    			
+    			var stuff = $scope.monthsData.days;
         		angular.forEach($scope.monthsData.days, function(value, index) {
-        				var tempBlock = [];
-        				if (value.name == "Monday") {
-        					console.log("Monday");
+        				console.log(value);
+    				  if (value.name == "Monday") {
+
+        					$scope.monday = createString(value.bestStarts, value.bestEnds);
+        					
         				}
-        				else if (value.name = "Tuesday") {
-        					console.log("Tuesday");
+        				else if (value.name == "Tuesday") {
+        					$scope.tuesday = createString(value.bestStarts, value.bestEnds);
         				}
-        				else if (value.name = "Wednesday") {
-        					console.log("Wednesday");
+        				else if (value.name == "Wednesday") {
+        					$scope.wednesday = createString(value.bestStarts, value.bestEnds);
         				}
-        				else if (value.name = "Thursday") {
-        					console.log("Thursday");
+        				else if (value.name == "Thursday") {
+        					$scope.thursday = createString(value.bestStarts, value.bestEnds);
         				}
-        				else if (value.name = "Friday") {
-        					console.log("Friday");
+        				else if (value.name == "Friday") {
+        					$scope.friday = createString(value.bestStarts, value.bestEnds);
         				}
-        				else if (value.name = "Saturday") {
-        					console.log("Saturday");
+        				else if (value.name == "Saturday") {
+        					$scope.saturday = createString(value.bestStarts, value.bestEnds);
         				}
-        				else if (value.name = "Sunday") {
-        					console.log("Sunday");
+        				else if (value.name == "Sunday") {
+        					$scope.sunday = createString(value.bestStarts, value.bestEnds);
         				}
 
         		});
