@@ -42,7 +42,7 @@ define([
             	 {state: 'home', label: 'Home'},
                 {state: 'dashboards', label: 'EcoDashboard'},
                 {state: 'trigen', label: 'Maintenance Times'},
-				{state: 'real-time', label: 'Real Time Monitor'},
+				/*{state: 'real-time', label: 'Real Time Monitor'},*/
 				{state: 'total', label: 'Monthly Output'},
 				{state: 'documentation', label: 'Documentation'},
 				

@@ -40,12 +40,12 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 templateUrl: 'views/dashboards.html',
                 controller: 'DashboardsCtrl'
             })
-		    .state('real-time', {
+		    /*.state('real-time', {
             	parent: 'secure',
                 url: '/real-time',
                 templateUrl: 'views/real-time.html',
                 controller: 'TrigenCtrl'
-            })
+            })*/
 		    .state('total', {
             	parent: 'secure',
                 url: '/total',
