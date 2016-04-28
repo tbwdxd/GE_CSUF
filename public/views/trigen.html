@@ -58,10 +58,7 @@
 	 	text-align: left;
 	 }
 </style>
-   <px-card>
-	   <div class="padding"></div>
-      <h1 style="text-align: center; font-size: 20px">Trigeneration Plant Optimization</h1>
-   </px-card>
+<div class="padding"></div>
    <px-card class="background">
 
    <script type="text/javascript">
@@ -91,7 +88,7 @@
   				<option value="December" >December</option>
 			</select>
 			<input type="submit" onclick="formSubmit()"></input>  	
-   	</form><br>
+   	</form><br> <hr>
    	<h1 style="text-align: center; font-size: 20px">{{month}}</h1>
    	<table style="width: 100%; text-align: left">
 	<thead>
@@ -131,8 +128,8 @@
 	<td>{{down.sceTotal * price | currency}}</td>
 	</tr>
 	</table>
-	<p>Total increase in SCE is calculated by using the total average SCE comsumption.</p>
-	<p>This is an estimate!</p>
+	<p style="font-size: 12px">Total increase in SCE is calculated by using the total average SCE comsumption.</p>
+	<p style="font-size: 12px">This is an estimate!</p>
 </px-card>
 
 </div>
