@@ -47,10 +47,8 @@ define(['angular', 'angular-ui-router'], function(angular) {
 <<<<<<< HEAD
                 controller: 'TrigenCtrl'
             })*/
-=======
                 controller: 'DashboardsCtrl'
             })
->>>>>>> 3834e2e1bf2cfdda1288ce9e9359f91bb098fbc8
 		    .state('total', {
             	parent: 'secure',
                 url: '/total',
