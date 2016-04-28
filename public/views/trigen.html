@@ -91,7 +91,7 @@ x.innerHTML=y.options[y.selectedIndex].text;
   				<option value="November" >November</option>
   				<option value="December" >December</option>
 			</select>
-			<input type="submit" onclick="Query_maintain()"></input>  	
+			<input type="submit" onclick="Query_maintain()"></input>
    	</form>
 <form>
 <h1 style="text-align: center; font-size: 20px">Best time to perform maintenance in  <span id = "Month_text"></span></h1>
@@ -106,32 +106,32 @@ x.innerHTML=y.options[y.selectedIndex].text;
 		<th>Saturday</th>
 		<th>Sunday</th>
 
-		</thead> 
+		</thead>
 		<td>
-		<tr ng-repeat="block in monday">{{block}}</tr>		
-		</td> 
+		<tr ng-repeat="block in monday">{{block}}</tr>
+		</td>
 		<td>
-		<tr ng-repeat="block in tuesday">{{block}}</tr>		
-		</td>	
-				<td>
-		<tr ng-repeat="block in wednesday">{{block}}</tr>		
+		<tr ng-repeat="block in tuesday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in thurdays">{{block}}</tr>		
+		<tr ng-repeat="block in wednesday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in friday">{{block}}</tr>		
+		<tr ng-repeat="block in thurdays">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in saturday">{{block}}</tr>		
+		<tr ng-repeat="block in friday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in sunday">{{block}}</tr>		
+		<tr ng-repeat="block in saturday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in monday">{{block}}</tr>		
+		<tr ng-repeat="block in sunday">{{block}}</tr>
 		</td>
-		 	
+				<td>
+		<tr ng-repeat="block in monday">{{block}}</tr>
+		</td>
+
    	</table>
 <!--old Joseph stuff
    <script type="text/javascript">
@@ -162,7 +162,7 @@ x.innerHTML=y.options[y.selectedIndex].text;
   				<option value="November" >November</option>
   				<option value="December" >December</option>
 			</select>
-			<input type="submit" onclick="formSubmit()"></input>  	
+			<input type="submit" onclick="formSubmit()"></input>
    	</form>
    	<h1 style="text-align: center; font-size: 20px">Best time to perform maintenance in {{month}}</h1>
    	<table style="width: 100%; text-align: left">
@@ -175,38 +175,38 @@ x.innerHTML=y.options[y.selectedIndex].text;
 		<th>Saturday</th>
 		<th>Sunday</th>
 
-		</thead> 
+		</thead>
 		<td>
-		<tr ng-repeat="block in monday">{{block}}</tr>		
-		</td> 
+		<tr ng-repeat="block in monday">{{block}}</tr>
+		</td>
 		<td>
-		<tr ng-repeat="block in tuesday">{{block}}</tr>		
-		</td>	
-				<td>
-		<tr ng-repeat="block in wednesday">{{block}}</tr>		
+		<tr ng-repeat="block in tuesday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in thurdays">{{block}}</tr>		
+		<tr ng-repeat="block in wednesday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in friday">{{block}}</tr>		
+		<tr ng-repeat="block in thurdays">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in saturday">{{block}}</tr>		
+		<tr ng-repeat="block in friday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in sunday">{{block}}</tr>		
+		<tr ng-repeat="block in saturday">{{block}}</tr>
 		</td>
 				<td>
-		<tr ng-repeat="block in monday">{{block}}</tr>		
+		<tr ng-repeat="block in sunday">{{block}}</tr>
 		</td>
-		 	
+				<td>
+		<tr ng-repeat="block in monday">{{block}}</tr>
+		</td>
+
    	</table>
 <<<<<<< HEAD
    	-->
    	<p style="font-size: 15px">Based on previous data and displays optimal hours to perform maintenance on the Trigeneration plant
    	</p>
-   
+
    </px-card>
 
 <px-card>
@@ -218,10 +218,10 @@ x.innerHTML=y.options[y.selectedIndex].text;
 <th>EndTime</th>
 <th>Total Increase in SCE</th>
 <th>Total Cost</th>
-</thead>	
+</thead>
 
 	<tr ng-repeat="down in downTime">
-	<td>{{down.startDate  * 1000 | date : 'short' : 'UTC'}}</td>	
+	<td>{{down.startDate  * 1000 | date : 'short' : 'UTC'}}</td>
 	<td>{{down.endDate * 1000 | date : 'short' : 'UTC'}}</td>
 	<td>{{down.sceTotal | number : 2}}	kWh</td>
 	<td>{{down.sceTotal * price | currency}}</td>
@@ -230,5 +230,16 @@ x.innerHTML=y.options[y.selectedIndex].text;
 	<p>Total increase in SCE is calculated by using the total average SCE comsumption.</p>
 	<p>This is an estimate!</p>
 </px-card>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Trigen</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Carbon Emissions (Pounds)</td><td>{{trigenEmission | number : 2}}</td>
+        </tr>
 
 </div>
