@@ -40,7 +40,8 @@
     for (var i = 0; i < 4000; i++) {
       data.push(randomData());
     }
-
+var donechart;
+if (!donechart){
     Polymer({
         is: "my-app-realtime",
         ready() {
@@ -109,6 +110,8 @@
           }, 4000);;
         }
       })
+donechart = true;
+}
     </script>
   </px-card>
 </div>
