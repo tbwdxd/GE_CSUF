@@ -98,24 +98,16 @@ a:active {
     text-decoration: none;
 }
 
-.parallax {
-  perspective: 1px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-.parallax__layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.parallax__layer--base {
-  transform: translateZ(0);
-}
-.parallax__layer--back {
-  transform: translateZ(-1px);
+#myBtn {
+    width: 300px;
+    padding: 10px;
+    font-size:20px;
+    position: absolute;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom: 50px;
+    z-index: 9999;
 }
 </style>
 
@@ -129,5 +121,4 @@ a:active {
 	<p>Analyze the power consumption of the California State University Campus</p>
 	<p style="padding-top: 10px;"></p>
 	<p class="button-view-now button-view"><a href="/dashboards" style="color: white">view app</a></p>
-</div>
 </div>
