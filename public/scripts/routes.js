@@ -43,8 +43,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
 		    .state('real-time', {
             	parent: 'secure',
                 url: '/real-time',
-                templateUrl: 'views/real-time.html',
-                controller: 'realtimeCtrl'
+                templateUrl: 'views/real-time.html'
             })
 		    .state('total', {
             	parent: 'secure',
