@@ -63,6 +63,77 @@
       <h1 style="text-align: center; font-size: 20px">Trigeneration Plant Optimization</h1>
    </px-card>
    <px-card class="background">
+   <!-- Bowen Test -->
+   <script>
+function Query_maintain()
+{
+var x=document.getElementById("Month_text");
+var y=document.getElementById("monthData");
+x.innerHTML=y.options[y.selectedIndex].text;
+}
+</script>
+</head>
+<body>
+
+<form>
+   		<label style="font-size=25px">Enter the month of maintenance</label>
+			<select id="monthData">
+  				<option value="January">January</option>
+  				<option value="February">February</option>
+  				<option value="March">March</option>
+  				<option value="April" >April</option>
+  				<option value="May" >May</option>
+  				<option value="June" >June</option>
+  				<option value="July" >July</option>
+  				<option value="August" >August</option>
+  				<option value="September" >September</option>
+  				<option value="October" >October</option>
+  				<option value="November" >November</option>
+  				<option value="December" >December</option>
+			</select>
+			<input type="submit" onclick="Query_maintain()"></input>  	
+   	</form>
+<form>
+<h1 style="text-align: center; font-size: 20px">Best time to perform maintenance in  <span id = "Month_text"></span></h1>
+
+<table style="width: 100%; text-align: left">
+		<thead>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
+
+		</thead> 
+		<td>
+		<tr ng-repeat="block in monday">{{block}}</tr>		
+		</td> 
+		<td>
+		<tr ng-repeat="block in tuesday">{{block}}</tr>		
+		</td>	
+				<td>
+		<tr ng-repeat="block in wednesday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in thurdays">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in friday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in saturday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in sunday">{{block}}</tr>		
+		</td>
+				<td>
+		<tr ng-repeat="block in monday">{{block}}</tr>		
+		</td>
+		 	
+   	</table>
+<!--old Joseph stuff
    <script type="text/javascript">
 		var formSubmit = function() {
 		    var scope = angular.element(document.getElementById("trigenboard")).scope();
@@ -131,6 +202,7 @@
 		</td>
 		 	
    	</table>
+   	-->
    	<p style="font-size: 15px">Based on previous data and shows best time to perform maintenance on the Trigeneration plant
    	</p>
    
