@@ -1,4 +1,4 @@
-<div id="realtime" ng-controller="realtimeCtrl">
+<div id="realtime" ng-controller="DashboardsCtrl">
   <px-card style="padding-top: 100px;">  
     <section>
       <my-app-realtime></my-app-realtime>
@@ -12,6 +12,15 @@
     <!-- test new real time chart-->
     <script>
       
+    //anydata 
+    var scope = angular.element(document.getElementById("realtime")).scope();
+    console.log(scope);
+
+
+
+
+
+
     function randomData() {
     now = new Date(+now + oneDay);
     value = value + Math.random() * 21 - 10;
