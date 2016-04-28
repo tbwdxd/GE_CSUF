@@ -43,6 +43,12 @@ a.pnew-link:hover {
 a.pnew-link:active {
     text-decoration: none;
 }
+.padding {
+    padding-top: 70px;
+}
+h1 {
+    font-weight: normal;
+}
 </style>
 
 <script>
@@ -71,7 +77,6 @@ $(document).ready(function() {
 });
     </script>
 
-
 <px-card>
 <body>
 	<nav id="new-nav" style="z-index: 2;">
@@ -87,7 +92,7 @@ $(document).ready(function() {
 		</div>
 	</nav>
     <br>
-<h1 align="center" size="20">Monthly Ouput</h1>
+<h1 align="center">Monthly Ouput</h1>
 <px-data-table striped filterable enable-column-resize table-data="{{avgData}}">
 	<px-data-table-column name="month" filterable></px-data-table-column>
 	<px-data-table-column name="year" filterable></px-data-table-column>
@@ -96,7 +101,8 @@ $(document).ready(function() {
     <px-data-table-column name="trigen"></px-data-table-column>
 </px-data-table>
 
-
+<div class="padding"></div>
+<hr>
 
 		
 
@@ -249,6 +255,8 @@ if (!donechart){
 <dom-module id="my-app-bar1">
 <template>
     <a name="2014"></a>
+    <div class="padding"></div>
+    <h1 align="center">2014 Output</h1>
   <echarts-component width="1000px" height="700px" options={{options}}></echarts-component>
 </template>
 </dom-module>
@@ -256,6 +264,8 @@ if (!donechart){
 <dom-module id="my-app-bar2">
 <template>
     <a name="2015"></a>
+    <div class="padding"></div>
+    <h1 align="center">2015 Output</h1>
   <echarts-component width="1000px" height="700px" options={{options}}></echarts-component>
 </template>
 </dom-module>
