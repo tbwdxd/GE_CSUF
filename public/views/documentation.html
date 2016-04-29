@@ -1,12 +1,110 @@
 <style type="text/css">
 .pad-top {
-	padding-top: 70px;
+	padding-top: 25px;
+}
+#navbar {
+	position: relative;
+}
+.content {
+	width: 65%;
+}
+h1 {
+	font-weight: normal;
+}
+ul:not([style-scope]):not(.style-scope), ol:not([style-scope]):not(.style-scope), dd:not([style-scope]):not(.style-scope){
+	margin-left: 0;
+}
+.float-menu {
+	background-color: #293c55;
+	width: 20%;
+	height: 300px;
+	right: 0;
+	margin-right: 5%;
+	border-radius: 3px;
+	position: fixed;
+	z-index: 30;
+}
+.menu-style {
+	line-height: 3;
+	list-style: none;
+	color: white;
 }
 </style>
 
+
+<script>
+    $(document).ready(function() {
+        function scrollToAnchor(aid){
+            var aTag = $("a[name='"+ aid +"']");
+            $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+        }
+        $("a").click(function() {
+            var href = $(this).attr('href').replace('#', '')
+            scrollToAnchor(href);
+        });         
+    });
+</script>
+
 <div ng-controller="HomeCtrl">
 	<div class="pad-top"></div>
+	<div class="float-menu">
+		<ul class="menu-style">
+			<li>Introduction</li>
+			<a href="#economic-improvement"><li>Economic Improvement</li></a>
+			<a href="#collecting-data"><li>Collecting Data</li></a>
+		</ul>
+	</div>
+
 	<div class="viewport">
-		<p>paragraph here</p>
+		<div class="content">
+			<a name="introduction"></a>
+			<h1>Introduction</h1>
+			<p>At Cal State Fullerton, electricity is supplied from three sources: three solar panels, a trigeneration plant from our campus, and Southern California Edison (SCE). Based on our data, the campus would produce more environmental-friendly energy if there are additional solar panels and batteries. We have also proved that the campus saves money by using power from the trigeneration plant and selling that power to SCE. The campus also uses a small amount of power from SCE. Based on our resources, our application allows users to track data,  and based on our analysis it helps in managing power consumption. It provides us with the percentage of power consumption for each power source on campus. Also it provides us with the best time slots for the maintenance based on real time data of the Trigeneration plant. In addition, this study provides the potential for environment friendly and economic power source planning.</p>
+
+			<a name="economic-improvement"></a>
+			<h1 class="pad-top">Economic Improvement</h1>
+			<p>By increasing the efficient use of the Trigeneration plant on campus, we provided recommendations to decrease the consumption of high pressure natural gas. The decrease in consumption of natural gas will reduce monetary cost and carbon emission on our campus for the school in order to power the Trigeneration plant. The application also displays the Trigeneration plant downtime, and the increase in SCE import due to this downtime. The analysis of seasonal changes and downtime costs provides an opportunity for prediction of maintenance.</p>
+
+			<a name="collecting-data"></a>
+			<h1 class="pad-top">Collecting Data</h1>
+			<p>We collected data from the three different power components that make up the power supply on California State Fullerton campus. These include the Trigeneration Plant installed 2010, Photovoltaic solar panels installed in 2012, and Southern California Edison. These three different power sources provide the campus with all its power needs. Currently, we have two years of data stored in the Predix cloud which our Titan Power App is based on. The facilities on CSUF campus have their own database. The database doesn’t allow real time connection through the Internet.</p>
+
+			<h1 class="pad-top">Accomplishments</h1>
+			<p>Step 1: Get Insights
+			We have completed this step. Two years of data were collected from the campus facilities and an application was developed with user friendly interface.</p>
+
+			<p>Step 2: Get Connected
+			The power supply on our Fullerton campus comes from three different sources: Solar panels, a Trigeneration plant, and Southern California Edison. There is an onsite database collecting data from all these facilities. Our application retrieves data from the onsite database. The onsite database doesn’t allow connection through the Internet. We have collected two years data to simulate the streaming from real time monitoring function of our application.</p>
+
+			<p>Step 3: Get Optimized
+			Our application provides two potential optimizations:
+			The analysis of seasonal changes allows automatic scheduling of the Trigeneration plant.
+			The analysis of downtimes and costs allows prediction of maintenance of both the solar panels and the Trigeneration plant.
+			</p>
+
+			<h1 class="pad-top">Predix Services</h1>
+			<ul>
+				<li>Predix Dashboard Seed</li>
+				<li>Predix SDK 15.3.0</li>
+				<li>Predix User Authentication and Authorization (UAA)</li>
+				<li>Predix Time Series</li>
+				<li>Predix Machine Simulator</li>
+			</ul>
+
+			<h1 class="pad-top">Open Source Libraries</h1>
+			<ul>
+				<li><a href="http://getbootstrap.com/" style="color: black;">Bootstrap</a></li>
+				<li><a href="https://github.com/ecomfe/echarts" style="color: black;">echarts</a></li>
+			</ul>
+
+			<h1 class="pad-top">Team Members</h1>
+			<p>Bowen Tian, Harpreet Saini, Joseph Porter, Luis Covarrubias, Shelley Pham, Yijie Sun, Yuting Zhang</p>
+			<p>Advisor: Dr. Yun Tian</p>
+			<p>Check out our <a href="https://github.com/tbwdxd/GE_CSUF/tree/luis_branch">github</a>.</p>
+
+			<h1 class="pad-top">Contact</h1>
+			<p>See more information <a href="http://gecsu.ecs.fullerton.edu/contact.php">here</a>.</p>
+
+		</div>
 	</div>
 </div>
