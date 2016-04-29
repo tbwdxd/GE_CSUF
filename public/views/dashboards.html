@@ -6,7 +6,6 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
-
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -31,6 +30,7 @@
 
     el.addEventListener("range-changed", function(e) {
     		var scope = angular.element(document.getElementById("Dashboard")).scope();
+        console.log(scope);
     		var from = +new Date(e.detail.value.from);
     		var to = +new Date(e.detail.value.to);
     		console.log(from, to);
@@ -88,7 +88,7 @@
       <h1>Select a time range: </h1>
 	  <px-rangepicker id="my-range-picker"
 					  range='{
-		  "from": "2014-03-30T00:00:00-08:00",
+		  "from": "2015-03-30T00:00:00-08:00",
 		  "to": "2016-03-29T00:00:00-08:00"
 			}'>
       </px-rangepicker>	

@@ -54,7 +54,10 @@ define(['angular', './sample-module'], function (angular, controllers) {
 
         					var tempBlock = [];
         					var len = beststarts.length;
-        					if (bestends.length == len) {
+        					if (bestends.length == 0 && beststarts.length == 0) {
+        						tempBlock.push("No optimized time");
+        					}
+        					else if (bestends.length == len) {
         						 for (var i = 0; i < len; i++){
         						 	tempBlock.push(beststarts[i].concat(' - ', bestends[i]));
         						 	}
