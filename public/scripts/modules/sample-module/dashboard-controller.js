@@ -116,7 +116,6 @@ define(['angular', './sample-module'], function (angular, controllers) {
    	$scope.sceData = angular.toJson(temp_SCE);	
         }).error(function(data, status, headers, config) {});
         */
-
         // This will update the values when the date range has been changed
         $scope.update = function(fromTime, toTime) {
         	var tempsce = [];
@@ -154,7 +153,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
         	  							}
         	  			}
    			});
-   			
+
    			
    			// Place all calculated values into $scope variables
    			$scope.solarData = angular.toJson(tempsolar);

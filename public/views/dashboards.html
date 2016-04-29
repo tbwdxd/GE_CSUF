@@ -6,7 +6,6 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
-
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -31,6 +30,7 @@
 
     el.addEventListener("range-changed", function(e) {
     		var scope = angular.element(document.getElementById("Dashboard")).scope();
+        console.log(scope);
     		var from = +new Date(e.detail.value.from);
     		var to = +new Date(e.detail.value.to);
     		console.log(from, to);
