@@ -3,52 +3,53 @@
       var started = false;
       document.getElementById("realtimeBtn").addEventListener("click", function(){
            tsData = angular.element(document.getElementById("realtime")).scope().tsData;
-        for (var i = 0; i < 192; i++) {
+        if (started == false){
+        for (var i = 0; i < 196; i++) {
             scedata.push(getsceData(i+diff));
             trigendata.push(gettrigenData(i+diff));
             solardata.push(getsolarData(i+diff));
             stage = diff +i;
         }
         started = true;
-        console.log(tsData[0]);
+        }
       });
      
     function getsceData(i) {
       now = new Date(+now + oneDay);
-      value = tsData[i]['SCE'];
+      var valuesc = tsData[i]['SCE'];
       return {
           Timestamp: now.toString(),
           value: [
            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            value
+            valuesc
           ]
         }
     }
     function gettrigenData(i) {
       now = new Date(+now + oneDay);
-      value = tsData[i]['Trigen'] * -1;
+      var valuetr = tsData[i]['Trigen']*(-1);
       return {
           Timestamp: now.toString(),
           value: [
            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            value
+            valuetr
           ]
         }
     }
     function getsolarData(i) {
       now = new Date(+now + oneDay);
-      value = tsData[i]['Solar'];
+      var valueso = tsData[i]['Solar'];
       return {
           Timestamp: now.toString(),
           value: [
            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            value
+            valueso
           ]
         }
     }
     function getdefaultData() {
       now = new Date(+now + oneDay);
-      value = 0;
+      var value = 0;
       return {
           Timestamp: now.toString(),
           value: [
@@ -62,15 +63,13 @@
     var scedata = [];
     var trigendata = [];
     var solardata = [];
-    var now = +new Date(2014, 1, 0);
-    var oneyear = 365*24 * 3600 * 1000
+    var now = +new Date(1997,9,3);
+    var oneyear = 365*24 * 3600 * 1000;
     var epochsec =Math.floor((Date.now()-oneyear) /1000);;
     var starttime = 1396138500;
     var diff = Math.floor((epochsec-starttime) /900);
     var stage = diff;
     var oneDay = 24 * 3600 * 1000;
-    var fifteenmin = 15* 60 * 1000;
-    var value =0;
     for (var i = 0; i < 192; i++) {
       scedata.push(getdefaultData());
       trigendata.push(getdefaultData());
@@ -85,7 +84,7 @@
       <my-app-realtime></my-app-realtime>
         <dom-module id="my-app-realtime">
           <template>
-            <echarts-component width="1200px" height="700px" options={{options}}></echarts-component>
+            <echarts-component width="1000px" height="500px" options={{options}}></echarts-component>
           </template>
         </dom-module>
     </section>
@@ -117,9 +116,7 @@ if (!donechart1){
                   trigger: 'axis',
                   formatter: function (params) {
                       console.log(params);
-                      
-                      var date = new Date(params[0].value[0]);
-                      return ' \nSCE: ' + params[0].value[1] + '\nTrigen:' + params[1].value[1]+ '\nSolar:' + params[2].value[1];
+                      return ' \nSolar Outputs: ' + params[0].value[1] /*+ '\nTrigen:' + params[1].value[1]+ '\nSolar:' + params[2].value[1]*/;
                   },
                   axisPointer: {
                       animation: false
@@ -139,34 +136,34 @@ if (!donechart1){
                   boundaryGap: [0, '100%'],
                   
               },
-              series: [{
+              series: [/*{
                   name: 'SCE',
-                  lineStyle:{normal:{color: '#1A5276'}},
+                  //lineStyle:{normal:{color: '#1A5276'}},
                   type: 'line',
                   stack: 'Output',
-                  areaStyle: {normal: {color: '#2471A3'}},
+                  //areaStyle: {normal: {color: '#2471A3'}},
                   showSymbol: false,
-                  hoverAnimation: false,
+                  //hoverAnimation: false,
                   data: scedata
               },
               {
                   name: 'Trigen',
-                  lineStyle:{normal:{color: '#27AE60'}},
+                  //lineStyle:{normal:{color: '#27AE60'}},
                   type: 'line',
                   stack: 'Output',
-                  areaStyle: {normal: {color: '#58D68D'}},
+                  //areaStyle: {normal: {color: '#58D68D'}},
                   showSymbol: false,
-                  hoverAnimation: false,
+                  //hoverAnimation: false,
                   data: trigendata
-              },
+              },*/
               {
                   name: 'Solar',
-                  lineStyle:{normal:{color: '#F5B041'}},
+                  //lineStyle:{normal:{color: '#F5B041'}},
                   type: 'line',
                   stack: 'Output',
-                  areaStyle: {normal: {color: '#F8C471'}},
+                  //areaStyle: {normal: {color: '#F8C471'}},
                   showSymbol: false,
-                  hoverAnimation: false,
+                  //hoverAnimation: false,
                   data: solardata
               }
               ]
@@ -184,12 +181,12 @@ if (!donechart1){
                   solardata.push(getsolarData(stage));
               }
               mychart.options ={
-                  series: [{
+                  series: [/*{
                       data: scedata
                   },
                   {
                       data: trigendata
-                  },
+                  },*/
                   {
                       data: solardata
                   }]
