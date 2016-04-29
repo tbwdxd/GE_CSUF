@@ -1,202 +1,28 @@
-    <script>
-      var tsData=[];
-      var started = false;
-      document.getElementById("realtimeBtn").addEventListener("click", function(){
-           tsData = angular.element(document.getElementById("realtime")).scope().tsData;
-        if (started == false){
-        for (var i = 0; i < 196; i++) {
-            scedata.push(getsceData(i+diff));
-            trigendata.push(gettrigenData(i+diff));
-            solardata.push(getsolarData(i+diff));
-            stage = diff +i;
-        }
-        started = true;
-        }
-      });
-     
-    function getsceData(i) {
-      now = new Date(+now + oneDay);
-      var valuesc = tsData[i]['SCE'];
-      return {
-          Timestamp: now.toString(),
-          value: [
-           [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            valuesc
-          ]
-        }
-    }
-    function gettrigenData(i) {
-      now = new Date(+now + oneDay);
-      var valuetr = tsData[i]['Trigen']*(-1);
-      return {
-          Timestamp: now.toString(),
-          value: [
-           [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            valuetr
-          ]
-        }
-    }
-    function getsolarData(i) {
-      now = new Date(+now + oneDay);
-      var valueso = tsData[i]['Solar'];
-      return {
-          Timestamp: now.toString(),
-          value: [
-           [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            valueso
-          ]
-        }
-    }
-    function getdefaultData() {
-      now = new Date(+now + oneDay);
-      var value = 0;
-      return {
-          Timestamp: now.toString(),
-          value: [
-           [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            value
-          ]
-        }
-    }
-    
-    var app = {};
-    var scedata = [];
-    var trigendata = [];
-    var solardata = [];
-    var now = +new Date(1997,9,3);
-    var oneyear = 365*24 * 3600 * 1000;
-    var epochsec =Math.floor((Date.now()-oneyear) /1000);;
-    var starttime = 1396138500;
-    var diff = Math.floor((epochsec-starttime) /900);
-    var stage = diff;
-    var oneDay = 24 * 3600 * 1000;
-    for (var i = 0; i < 192; i++) {
-      scedata.push(getdefaultData());
-      trigendata.push(getdefaultData());
-      solardata.push(getdefaultData());
-    }
-    </script>
 
-<div id="realtime" ng-controller="DashboardsCtrl">
-  <px-card style="padding-top: 100px;">  
-    <button id = "realtimeBtn"> start </button> <p>5s = 15min</p>
-    <section>
-      <my-app-realtime></my-app-realtime>
-        <dom-module id="my-app-realtime">
-          <template>
-            <echarts-component width="1000px" height="500px" options={{options}}></echarts-component>
-          </template>
-        </dom-module>
-    </section>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+$(document).ready(function() {
+setInterval(function(){
+	var table = document.querySelector("#test-chart");
+	console.log("refreshing");
+   	table.refreshAllSeries(); 
+ }, 5000);
+});
+</script>
 
-    <!--<p>{{tsData}}</p>-->
-    <!-- test new real time chart-->
+<br><br><br><br><br>
+<div id="realtime" ng-controller="TableCtrl">
+<px-card>
 
-    <script>
+<input type="button" name="Series-Button" value="Start Streaming" ng-click="start()"/>
 
+<px-chart id="test-chart">
+	<px-chart-series-line id="Trigen Real Time" data={{solarData}}>
+	</px-chart-series-line>
+</px-chart>
 
-var started = false;    
-var donechart1;
-if (!donechart1){
-    Polymer({
-        is: "my-app-realtime",
-        ready() {
-      
-          this.options = {
-              title: {
-                  text: 'Real-time Data Monitor'
-              },
-              grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-              },
-              tooltip: {
-                  trigger: 'axis',
-                  formatter: function (params) {
-                      console.log(params);
-                      return ' \nSolar Outputs: ' + params[0].value[1] /*+ '\nTrigen:' + params[1].value[1]+ '\nSolar:' + params[2].value[1]*/;
-                  },
-                  axisPointer: {
-                      animation: false
-                  }
-              },
-              xAxis: {
-                  type: 'time',
-                  axisLabel: {
-                    textStyle:{
-                        color: '#FFFFFF'
-                    }
-                  }
-                  
-              },
-              yAxis: {
-                  type: 'value',
-                  boundaryGap: [0, '100%'],
-                  
-              },
-              series: [/*{
-                  name: 'SCE',
-                  //lineStyle:{normal:{color: '#1A5276'}},
-                  type: 'line',
-                  stack: 'Output',
-                  //areaStyle: {normal: {color: '#2471A3'}},
-                  showSymbol: false,
-                  //hoverAnimation: false,
-                  data: scedata
-              },
-              {
-                  name: 'Trigen',
-                  //lineStyle:{normal:{color: '#27AE60'}},
-                  type: 'line',
-                  stack: 'Output',
-                  //areaStyle: {normal: {color: '#58D68D'}},
-                  showSymbol: false,
-                  //hoverAnimation: false,
-                  data: trigendata
-              },*/
-              {
-                  name: 'Solar',
-                  //lineStyle:{normal:{color: '#F5B041'}},
-                  type: 'line',
-                  stack: 'Output',
-                  //areaStyle: {normal: {color: '#F8C471'}},
-                  showSymbol: false,
-                  //hoverAnimation: false,
-                  data: solardata
-              }
-              ]
-          }
-          var mychart = this;
-          app.timeTicket = setInterval(function () {
-            if (started){
-              for (var i = 0; i < 1; i++) {
-                  stage = stage +1;
-                  scedata.shift();
-                  scedata.push(getsceData(stage));
-                  trigendata.shift();
-                  trigendata.push(gettrigenData(stage));
-                  solardata.shift();
-                  solardata.push(getsolarData(stage));
-              }
-              mychart.options ={
-                  series: [/*{
-                      data: scedata
-                  },
-                  {
-                      data: trigendata
-                  },*/
-                  {
-                      data: solardata
-                  }]
-              }
-            };
-          }, 5000);;
-        }
-      })
-donechart1 = true;
-}
-    </script>
-  </px-card>
+</px-card>
 </div>
+

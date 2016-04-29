@@ -2,15 +2,16 @@ define(['angular', './sample-module'], function (ngular, controllers) {
     'use strict';
 
     // Controller definition
-    controllers.controller('TableCtrl', ['$scope', '$http', function($scope, $http) {
+    controllers.controller('TableCtrl', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
     		
     		$scope.price = 0.135;
-    		$scope.solarData = null;
+    		//$scope.solarData = null;
     		
     		// Get the monthly data
         	$http.get('../sample-data/avg.json')
         	.then(function(res) {
             $scope.avgData = res.data;
+	    console.log($scope.avgData);
         });
         
         // Get the Trigen DownTime
@@ -27,12 +28,11 @@ define(['angular', './sample-module'], function (ngular, controllers) {
             	return [curVal[0], curVal[1]];
         		}
     			);
-
     			conosle.log($scope.solarData);
     	});
     	*/
     	
-    	
+    	/*
         $http({
            url: '/api/v1/datapoints',
            method: 'POST',    
@@ -46,21 +46,21 @@ define(['angular', './sample-module'], function (ngular, controllers) {
 		console.log($scope.solarData);
     	});
  
- /*   	
-    	var week=100;
+*/
+    		var week=100;
 		var week2=99;
-		$scope.solarData = null;
+		$scope.solarData = [];
 		$scope.tempData = [];
 		//var query = '{"start":"'+week+'w-ago","tags":[{"name":"SolarData"}]}';
 		//var query = '{"cache_time":0,"tags":[{"name":"Trigen-Data","order":"desc"}],"start":'+week+'w-ago,"end":'+week2+'w-ago}';
 		var fetchinterval;
 		$scope.fetch=function(){
+			$scope.solarData = [];
 			--week;
 			console.log("week_one", week);
 			--week2;
 			console.log("week_one", week2);
-			var query = '{"cache_time":0,"tags":[{"name":"Trigen-Data","order":"desc"}],"start":'+week+'w-ago,"end":'+week2+'w-ago}';
-			$scope.solarData = [];
+			var query = '{"cache_time":0,"tags":[{"name":"Trigen-Data","order":"asc"}],"start":'+week+'w-ago,"end":'+week2+'w-ago}';
        			$http({
            		url: '/api/v1/datapoints',
           		 method: 'POST',    
@@ -76,21 +76,17 @@ define(['angular', './sample-module'], function (ngular, controllers) {
 			$scope.solarData = $scope.tempData;
 			console.log($scope.solarData);
 		};
-		console.log($scope.solarData);
+		//console.log($scope.solarData);
 		$scope.start = function() {
-        		fetchInterval = $interval($scope.fetch, 3000);
+        		fetchinterval = $interval($scope.fetch, 5000);
     		};
-
 		// Clear the interval when the scope/controller is 'destroyed'
     		$scope.$on('$destroy', function() {
-       			$interval.cancel(fetchInterval);
+       			$interval.cancel(fetchinterval);
     		});
-
     		// kick off initial start
     		//$scope.start();
-
-
-
+/*
 	$scope.newSeries = function(week1, week2)
 	{
 		//$scope.solarData = [];
@@ -109,9 +105,9 @@ define(['angular', './sample-module'], function (ngular, controllers) {
 			});
 		console.log($scope.solarData);
 		return $scope.solarData;
-
 	};
 	*/
     	
     }]);
 });
+
